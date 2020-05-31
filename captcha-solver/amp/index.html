@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+
+    <title>Approach to decoding CAPTCHA</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <meta name="description" content="How to decode CAPTCHA and extract the text from it. In this article I will be using VTU website (vtu.ac.in) as an example to explain the process." />
+    <link rel="shortcut icon" href="/../../favicon.png" type="image/png" />
+    <link rel="canonical" href="/../" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="rbklabs" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Approach to decoding CAPTCHA" />
+    <meta property="og:description" content="How to decode CAPTCHA and extract the text from it. In this article I will be using VTU website (vtu.ac.in) as an example to explain the process." />
+    <meta property="og:url" content="https://rbklabs.in/captcha-solver/" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta property="article:published_time" content="2020-05-31T16:11:16.000Z" />
+    <meta property="article:modified_time" content="2020-05-31T16:11:16.000Z" />
+    <meta property="article:tag" content="Software" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Approach to decoding CAPTCHA" />
+    <meta name="twitter:description" content="How to decode CAPTCHA and extract the text from it. In this article I will be using VTU website (vtu.ac.in) as an example to explain the process." />
+    <meta name="twitter:url" content="https://rbklabs.in/captcha-solver/" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rakshith BK" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Software" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1333" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "rbklabs",
+        "url": "https://rbklabs.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/no_bg_xtra_large.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rakshith BK",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/profile_photo_rbklabs.jpeg",
+            "width": 901,
+            "height": 907
+        },
+        "url": "https://rbklabs.in/author/rakshith/",
+        "sameAs": [
+            "https://github.com/rakshithbk"
+        ]
+    },
+    "headline": "Approach to decoding CAPTCHA",
+    "url": "https://rbklabs.in/captcha-solver/",
+    "datePublished": "2020-05-31T16:11:16.000Z",
+    "dateModified": "2020-05-31T16:11:16.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=2000&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ",
+        "width": 2000,
+        "height": 1333
+    },
+    "keywords": "Software",
+    "description": "\n\n&gt; Note:\nThis is something I worked on for one of my project. In the example I will be\ndecoding the captch of VTU website, which is an University for Engineering\ncourses and has captcha at results portal. \nThe approach detailed in this article is not a general purpose solution, but can\nbe used for captchas of similar complexities.\n \n\nPreface\nVTU results page is known for its speed, reliability, performance and\nuser-friendly interface. Or rather the lack of it. Every semester, even though\nthe or",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rbklabs.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.17" />
+    <link rel="alternate" type="application/rss+xml" title="rbklabs" href="/../../rss/index.rss" />
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,600,400" />
+    <style amp-custom>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{margin:0.67em 0;font-size:2em}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{position:relative;vertical-align:baseline;font-size:75%;line-height:0}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}amp-img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;color:inherit;font:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{margin:0 2px;padding:0.35em 0.625em 0.75em;border:1px solid #c0c0c0}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}html{max-height:100%;height:100%;font-size:62.5%;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{max-height:100%;height:100%;color:#3a4145;background:#f4f8fb;letter-spacing:0.01rem;font-family:"Merriweather",serif;font-size:1.8rem;line-height:1.75em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"kern" 1;-moz-font-feature-settings:"kern" 1;-o-font-feature-settings:"kern" 1}::-moz-selection{background:#d6edff}::selection{background:#d6edff}h1,h2,h3,h4,h5,h6{margin:0 0 0.3em 0;color:#2e2e2e;font-family:"Open Sans",sans-serif;line-height:1.15em;text-rendering:geometricPrecision;-webkit-font-feature-settings:"dlig" 1,"liga" 1,"lnum" 1,"kern" 1;-moz-font-feature-settings:"dlig" 1,"liga" 1,"lnum" 1,"kern" 1;-o-font-feature-settings:"dlig" 1,"liga" 1,"lnum" 1,"kern" 1}h1{text-indent:-2px;letter-spacing:-1px;font-size:2.6rem}h2{letter-spacing:0;font-size:2.4rem}h3{letter-spacing:-0.6px;font-size:2.1rem}h4{font-size:1.9rem}h5{font-size:1.8rem}h6{font-size:1.8rem}a{color:#4a4a4a}a:hover{color:#111}p,ul,ol,dl{margin:0 0 2.5rem 0;font-size:1.5rem;text-rendering:geometricPrecision;-webkit-font-feature-settings:"liga" 1,"onum" 1,"kern" 1;-moz-font-feature-settings:"liga" 1,"onum" 1,"kern" 1;-o-font-feature-settings:"liga" 1,"onum" 1,"kern" 1}ol,ul{padding-left:2em}ol ol,ul ul,ul ol,ol ul{margin:0 0 0.4em 0;padding-left:2em}dl dt{float:left;clear:left;overflow:hidden;margin-bottom:1em;width:180px;text-align:right;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-bottom:1em;margin-left:200px}li{margin:0.4em 0}li li{margin:0}hr{display:block;margin:1.75em 0;padding:0;height:1px;border:0;border-top:#efefef 1px solid}blockquote{box-sizing:border-box;margin:1.75em 0 1.75em 0;padding:0 0 0 1.75em;border-left:#4a4a4a 0.4em solid;-moz-box-sizing:border-box}blockquote p{margin:0.8em 0;font-style:italic}blockquote small{display:inline-block;margin:0.8em 0 0.8em 1.5em;color:#ccc;font-size:0.9em}blockquote small:before{content:"\2014 \00A0"}blockquote cite{font-weight:700}blockquote cite a{font-weight:normal}mark{background-color:#fdffb6}code,tt{padding:1px 3px;border:#e3edf3 1px solid;background:#f7fafb;border-radius:2px;white-space:pre-wrap;font-family:Inconsolata,monospace,sans-serif;font-size:0.85em;font-feature-settings:"liga" 0;-webkit-font-feature-settings:"liga" 0;-moz-font-feature-settings:"liga" 0}pre{overflow:auto;box-sizing:border-box;margin:0 0 1.75em 0;padding:10px;width:100%;border:#e3edf3 1px solid;background:#f7fafb;border-radius:3px;white-space:pre;font-family:Inconsolata,monospace,sans-serif;font-size:0.9em;-moz-box-sizing:border-box}pre code,pre tt{padding:0;border:none;background:transparent;white-space:pre-wrap;font-size:inherit}kbd{display:inline-block;margin-bottom:0.4em;padding:1px 8px;border:#ccc 1px solid;background:#f4f4f4;border-radius:4px;box-shadow:0 1px 0 rgba(0,0,0,0.2),0 1px 0 0 #fff inset;color:#666;text-shadow:#fff 0 1px 0;font-size:0.9em;font-weight:700}table{box-sizing:border-box;margin:1.75em 0;max-width:100%;width:100%;background-color:transparent;-moz-box-sizing:border-box}table th,table td{padding:8px;border-top:#efefef 1px solid;vertical-align:top;text-align:left;line-height:20px}table th{color:#000}table caption + thead tr:first-child th,table caption + thead tr:first-child td,table colgroup + thead tr:first-child th,table colgroup + thead tr:first-child td,table thead:first-child tr:first-child th,table thead:first-child tr:first-child td{border-top:0}table tbody + tbody{border-top:#efefef 2px solid}table table table{background-color:#fff}table tbody > tr:nth-child(odd) > td,table tbody > tr:nth-child(odd) > th{background-color:#f6f6f6}table.plain tbody > tr:nth-child(odd) > td,table.plain tbody > tr:nth-child(odd) > th{background:transparent}iframe,amp-iframe,.fluid-width-video-wrapper{display:block;margin:1.75em 0}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper amp-iframe{margin:0}textarea,select,input{margin:0 0 5px 0;padding:6px 9px;width:260px;outline:0;border:#e7eef2 1px solid;background:#fff;border-radius:4px;box-shadow:none;font-family:"Open Sans",sans-serif;font-size:1.6rem;line-height:1.4em;font-weight:100;-webkit-appearance:none}textarea{min-width:250px;min-height:80px;max-width:340px;width:100%;height:auto}input[type="text"]:focus,input[type="email"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="number"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="week"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,textarea:focus{outline:none;outline-width:0;border:#bbc7cc 1px solid;background:#fff}select{width:270px;height:30px;line-height:30px}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{zoom:1}.main-header{position:relative;display:table;overflow:hidden;box-sizing:border-box;width:100%;height:50px;background:#5ba4e5 no-repeat center center;background-size:cover;text-align:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}.content{background:#fff;padding-top:15px}.blog-title,.content{margin:auto;max-width:600px}.blog-title a{display:block;padding-right:16px;padding-left:16px;height:50px;color:#fff;text-decoration:none;font-family:"Open Sans",sans-serif;font-size:16px;line-height:50px;font-weight:600}.post{position:relative;margin-top:0;margin-right:16px;margin-left:16px;padding-bottom:0;max-width:100%;border-bottom:#ebf2f6 1px solid;word-wrap:break-word;font-size:0.95em;line-height:1.65em}.post-header{margin-bottom:1rem}.post-title{margin-bottom:0}.post-title a{text-decoration:none}.post-meta{display:block;margin:3px 0 0 0;color:#9eabb3;font-family:"Open Sans",sans-serif;font-size:1.3rem;line-height:2.2rem}.post-meta a{color:#9eabb3;text-decoration:none}.post-meta a:hover{text-decoration:underline}.post-meta .author{margin:0;font-size:1.3rem;line-height:1.3em}.post-date{display:inline-block;text-transform:uppercase;white-space:nowrap;font-size:1.2rem;line-height:1.2em}.post-image{margin:0;padding-top:3rem;padding-bottom:30px;border-top:1px #E8E8E8 solid}.post-image img{object-fit:cover;}.post-content amp-img,.post-content amp-anim{position:relative;left:50%;display:block;padding:0;min-width:0;max-width:112%;width:calc(100% + 32px);height:auto;transform:translateX(-50%);-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%)}.footnotes{font-size:1.3rem;line-height:1.6em;font-style:italic}.footnotes li{margin:0.6rem 0}.footnotes p{margin:0}.footnotes p a:last-child{text-decoration:none}.site-footer{position:relative;margin:0 auto 20px auto;padding:1rem 15px;max-width:600px;color:rgba(0,0,0,0.5);font-family:"Open Sans",sans-serif;font-size:1.1rem;line-height:1.75em}.site-footer a{color:rgba(0,0,0,0.5);text-decoration:none;font-weight:bold}.site-footer a:hover{border-bottom:#bbc7cc 1px solid}.poweredby{display:block;float:right;width:45%;text-align:right}.copyright{display:block;float:left;width:45%}</style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="main-header">
+        <nav class="blog-title">
+            <a href="/../../">rbklabs</a>
+        </nav>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Approach to decoding CAPTCHA</h1>
+                <section class="post-meta">
+                    <p class="author">by <a href="/../../author/rakshith/">Rakshith BK</a></p>
+                    <time class="post-date" datetime="2020-05-31">2020-05-31</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ" width="600" height="400" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p></p><blockquote><strong>Note:</strong><br />This is something I worked on for one of my project. In the example I will be decoding the captch of VTU website, which is an University for Engineering courses and has captcha at results portal. <br />The approach detailed in this article is not a general purpose solution, but can be used for captchas of similar complexities.</blockquote><p> </p><h3 id="preface">Preface</h3><p>VTU results page is known for its speed, reliability, performance and user-friendly interface. Or rather the lack of it. Every semester, even though the org knows exactly how many students will be looking forward for their results, it always fails to scale up their servers to cater to this load. It usually takes hours to get your results after they are released. The webpage does not load, the result request is not queried, or the whole website just crashes. And moreover the results of the previous semester will be wiped out before the new ones are uploaded. So there is no way for a student to get his last results (screenshot is the only option) or rather all his sem results in one place.</p><p>I wanted to create a website that would store these results, of all semesters and would display them on request. And this also falls under the web-scraping domain, which I wanted to do a project in. So I started to work on getting the details required, but the problem was the form to query the results also had a CAPTCHA.</p><p>So in this article i will be explaining the steps I took to decode them and convert to text so that I can get whats behind it.</p><hr></hr><h3 id="the-captcha-image">The CAPTCHA image</h3><p>The image is not that complex when compared to other google captchas that has a lot of features like warping, tilt, blur, skew etc.. to consider in the text that has to be decoded.</p><p>Saying that, this took a bit of work as well, since I decided to solve this without additional libraries, just simple python. Using open source projects Tessaract or other OCRs will be a bit of overkill for this Image.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>captcha image in the results page of the website.</figcaption></figure><p>I saved a few such Images and found that the text is always at the center and in green color. And the entire image is covered in static/noise. </p><p>Initially I thought of extracting Green from the RGB matrix of the image, since the text that i want is entirely in green. But this didn't work as there was a lot of noise pixels that were in green also. What worked is a simple thresholding of the image.<br />Converted my image to monochrome/binary with appropriate threshold value to select between black pixel or white pixel worked far better than I had imagined.</p><p></p><p>Output of this thresholding captcha -</p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div></figure><p>Now that the text is clear, next is the OCR part of actually converting the contents on the image to usable text. Before that I had saved bunch of images and there was a pattern emerging, all the characters occupied same space at the middle of the image. And to visualize it better, I used this <a href="https://www.dcode.fr/binary-image">web-tool</a> to convert the pixels to text characters and saved it.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Each character in that text is a pixel in binary.</figcaption></figure><p>Some points that came out about this captcha now-</p><ol><li>The text is always at the center and starts at <code>[60,11]</code> ie. top left corner and ends at <code>[113, 23]</code> ie. bottom right corner.</li><li>Each character in the text occupies exactly the same number of pixels ie- same height and width. Which means a rectangle mask can be used to extract each individual char. The dimensions of this mask <code>8 X 12</code>.</li></ol><hr></hr><h3 id="manual-labeling">Manual Labeling </h3><p>Now that we know the dimensions and position of the charterers in the image and we have removed the noise, the next step is to isolate each character and start labeling. This is one step that is not automated, but is also one-time requirement.</p><p>Using a small script, I downloaded a bunch of captchas and chopped them down to individual characters and saved each one with different number as file name.<br />During the process I found out that characters -   <code>I L O i l o 1 0</code>  are not used. Which is actually quite obvious when you think about it, they are hard to distinguish from each other in several fonts.</p><p></p>
+<p></p><figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div><figcaption>Labeled data</figcaption></figure><hr></hr><h3 id="turning-into-dataset">Turning into Dataset </h3><p>Converting this set of labeled Images into usable dataset is actually pretty simple. All you have to do is store it in a Dictionary with character as key and its pixel content as value. And save this data to a file, so that it can be used.</p><p></p><hr></hr><h3 id="using-the-dataset">Using the Dataset</h3><p>Now that we have the captcha character's data in a file, this can be used in other projects that need solving/ image to text capabilities for this captcha. </p><ol><li>Fetch the captcha image for your request.</li><li>De-Noise the image with the same process used in the captcha dataset creation process.</li><li>Crop the de-noised image into its respective characters.</li><li>Load the captcha dataset and compare the image pixel data of the cropped image with the pixel data of all characters present in the dataset. Take a <code>possible match</code> value for each comparison and in the end the character with maximum value for <code>possible match</code> is the most probable/ identified Character.</li></ol><p>In my project this probability value for the right comparison was almost always 1 (ranged between 90 - 100% due to noise pixels near character in some cases). Which means it can identify the character with perfect accuracy.</p><p></p><p>In the above code - <br />The image is first cropped into individual characters and saved for debug purposes. The data set <code>CaptchaJSON.json</code> is loaded for decoding the saved character images. Since I found that my prediction works with good accuracy (almost 1), if the predicted probability goes below 0.7, this function prints a warning message. (Explaining the snippet, I case you choose to use it in your code).</p><hr></hr><h3 id="conclusion">Conclusion</h3><p>I have no background in Image Processing and honestly had no idea where to start when I was stuck with this captcha. This was one of the reason why I did not go the ML or tesseract way. Most of the processes there are gibberish to me and poking around the captcha showed that learning such libraries was way too much effort for solving this issue at hand. Anyway, It actually worked quite better than I had expected. I was just hoping for an accuracy of <code>0.6 - 0.7</code>, ended up getting close to <code>1</code>.</p><p>Thanks for sticking so long and I hope this article gave you a perspective on how to approach <em>solving an image-to-text problem.</em></p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="/../../">rbklabs</a> &copy; 2020</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+</body>
+</html>
