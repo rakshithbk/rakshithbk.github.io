@@ -24,7 +24,7 @@
     <meta property="og:url" content="https://rbklabs.in/word-clock-2/" />
     <meta property="og:image" content="https://rbklabs.in/content/images/2020/05/F7RG3L8IBDTSRKD.LAE.jpg" />
     <meta property="article:published_time" content="2018-09-23T18:30:00.000Z" />
-    <meta property="article:modified_time" content="2020-05-24T14:09:59.000Z" />
+    <meta property="article:modified_time" content="2020-06-01T15:42:55.000Z" />
     <meta property="article:tag" content="Electronics" />
     
     <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +69,7 @@
     "headline": "Word Clock",
     "url": "https://rbklabs.in/word-clock-2/",
     "datePublished": "2018-09-23T18:30:00.000Z",
-    "dateModified": "2020-05-24T14:09:59.000Z",
+    "dateModified": "2020-06-01T15:42:55.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://rbklabs.in/content/images/2020/05/F7RG3L8IBDTSRKD.LAE.jpg",
@@ -122,6 +122,12 @@
             <section class="content">
                 <p>This is a simple clock i saw online and was very fascinated by it. I had never thought of representing time in words, on a wall clock, even though I had seen some widgets for smartphone. I decided right then that I will make one for my home.</p><p>This is a very old Project, I guess 2015. The original make I saw was from <a href="https://www.instructables.com/member/drj113/">Doug</a>. His code was a bit complex and used PIC microcontroller. So i had to write my own code for arduino (Atmega 328p).</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="/../content/images/2020/05/ezgif.com-optimize-1.gif" class="kg-image"><figcaption>Startup check sequence</figcaption></figure><p>The components and working in simple terms -</p><ul><li>Arduino/ Atmega 328p. Microcontroller to run everything, get time, control LEDs, accept user input.</li><li>RTC to maintain time, even when there is a power outage. (it has a coin cell, that can run for years).</li><li>Shift registers, since the microcontroller does not have required number of IO pins to controll all the LEDs.</li><li>Darlington pairs, to drive the LED strips for each word. This is because the strip is 12V rated and also it is bad to drive too much current from microcontrollers.</li><li>The rest. Like voltage regulators, buttons, power adapters, connectors, status LEDs  etc..</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="/../content/images/2020/05/schematic.jpg" class="kg-image"><figcaption>schematic</figcaption></figure><p>The Electronics is only half of the work in this project. The other half is building the frame, getting the stickering done for the word stencil and adding the LED strips of suitable length for each word, with a separator to prevent light diffusion. </p><p>Code -</p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/39e2e6e72f379840b6604875305d2404.js"></script>
 <style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
     .gist-data{
     max-height:450px; // Any height
     overflow-y: visible;
