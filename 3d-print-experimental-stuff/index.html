@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic" rel="stylesheet" type="text/css">
     <link href="/assets/css/style.min.css"  rel="stylesheet" type="text/css">
-    <link href="/../favicon.png" rel="shortcut icon">
+    <link href="../favicon.png" rel="shortcut icon">
     <meta name="description" content="Some small projects like using 3D printer to print designs on t-shirts, print keys.." />
-    <link rel="shortcut icon" href="/../favicon.png" type="image/png" />
-    <link rel="canonical" href="/index.html" />
+    <link rel="shortcut icon" href="../favicon.png" type="image/png" />
+    <link rel="canonical" href="index.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <link rel="amphtml" href="/amp/" />
+    <link rel="amphtml" href="amp/" />
     
-    <meta property="og:site_name" content="rbklabs" />
+    <meta property="og:site_name" content="RBKlabs" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="3D print - Experimental Stuff" />
     <meta property="og:description" content="Some small projects like using 3D printer to print designs on t-shirts, print keys.." />
@@ -45,7 +45,7 @@
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name": "rbklabs",
+        "name": "RBKlabs",
         "url": "https://rbklabs.in/",
         "logo": {
             "@type": "ImageObject",
@@ -85,24 +85,24 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.17" />
-    <link rel="alternate" type="application/rss+xml" title="rbklabs" href="/../rss/index.rss" />
+    <meta name="generator" content="Ghost 3.18" />
+    <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../rss/index.rss" />
 </head>
 <body class="post-template tag-3d">
     <header id="header" class="header cover-image animated fadeIn" style="background-image: url(../content/images/size/w2000/2020/05/IMG_20190127_130119---dark-1.jpg)">
         <section class="header--top">
             <div>
-    <a class="blog-title " href="/../">
-            <img class="blog-logo" src="/../content/images/2020/05/no_bg_xtra_large.png" alt="Blog Logo" />
+    <a class="blog-title " href="../">
+            <img class="blog-logo" src="../content/images/2020/05/no_bg_xtra_large.png" alt="Blog Logo" />
     </a>
     
 </div>
 <nav class="blog-navigation">
     <ul>
         <!-- Loop through the navigation items -->
-            <li class="nav-home"><a href="/../"><span class="label">Home</span></a></li>
-            <li class="nav-tag"><a href="/../my-tags/"><span class="label">Tag</span></a></li>
-            <li class="nav-author"><a href="/../author/rakshith/"><span class="label">Author</span></a></li>
+            <li class="nav-home"><a href="../"><span class="label">Home</span></a></li>
+            <li class="nav-tag"><a href="../my-tags/"><span class="label">Tag</span></a></li>
+            <li class="nav-author"><a href="../author/rakshith/"><span class="label">Author</span></a></li>
         <!-- End the loop -->
     </ul>
 </nav>        </section>
@@ -110,9 +110,9 @@
             <div class="hero-content">
                 <h1 class="post-title animated fadeInUp delay-1">3D print - Experimental Stuff</h1>
                 <div class="post-data">
-                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="/../author/rakshith/">Rakshith BK</a></span> <a href="/index.html"><time class="timesince" datetime="2020-05-23T20:57" title="2020-05-23 20:57">9 days ago</time></a></p>
+                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-05-23T20:57" title="2020-05-23 20:57">11 days ago</time></a></p>
                     <p class="post--read-time animated fadeInUp delay-3">2 min read</p>
-                        <p class="post--tags animated fadeInUp delay-4"> <a href="/../tag/3d/">3d</a></p>
+                        <p class="post--tags animated fadeInUp delay-4"> <a href="../tag/3d/">3d</a></p>
                 </div>
             </div>
         </section>
@@ -120,7 +120,7 @@
     <main id="main" class="main">
         <article class="animated fadeIn delay-5 post tag-3d">
             <section class="content">
-                <h3 id="1-t-shirt-printing"><br>1. T-shirt Printing</h3><p>3D printing is essentially chopping down objects into thin 2D surfaces and printing them on top of each other. So why don't we just stop the print after 2-3 layers to get a regular print on a surface ? And instead of on printbed, why not print on fabric ?</p><p>So I clamped an old t-shirt on to the print bed, removed the glass panel, and adjusted the end/stop switch for the z-axis to account for this change in height. Then i made a gcode for a 2mm thickness print and tried it out.</p><p>Things to keep in mind -</p><ul><li>Make sure the nozzle height is adjusted properly. If not this could drag the cloth with the nozzle moment, burning it or damaging the nozzle itself.</li><li>Keep the extruder temperature to a minimum. Make sure the temp is only what is required, this is because prints on white cloths left a dark shade at parts with thin print lines. That being said don't lower the temp so low that the extruder jams. Usually PLA has a range to temp that it can be used with, keep it at the lower end.</li><li>Have a good end script on your slicer. I have used a script that will lift the extruder 20mm and then home all axis. This will keep the rest of your t shirt that's dangling outside of the printbed safe.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="/../content/images/2020/05/IMG_20190127_130119---Copy.jpg" class="kg-image"><figcaption>This is 1 layer thick print. Couldn't find images of other prints.</figcaption></figure><h3 id="2-gas-stove-knob-">2. Gas Stove Knob -</h3><p>This was my first time using the printer to get a fix for real life problem. Most of the time i just used it to print already available 3D models or for trying out fun stuff. This is the first time I modeled the 3D object that I wanted.</p><p>The knob/regulator of my old gas stove broke and its hard to find replacements for it. I tried searching it online and in some nearby shops. So I printed it. I used Tinkercad for this.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="/../content/images/2020/05/IMG_20181231_215921.jpg" class="kg-image"><figcaption>First print that had an actual application 😅</figcaption></figure><h3 id="3-bike-keys-">3. Bike Keys - </h3><p>Just wanted to try out if it could be done. I was learning Autodesk Fusion 360 and wanted to model something along the way. I found that we can import images and use that as stencil to trace out objects. This will simplify the process and the dimensions will also be accurate, provided there is no skew in the images taken. </p><p>I wanted to model something a bit complex, and wanted it to be small so that i can print it with less time. The keys were next to me, so i took a few photos and got started. </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="/../content/images/2020/05/IMG_20190205_225720---Copy.jpg" class="kg-image"><figcaption>3D Printed key.</figcaption></figure>
+                <h3 id="1-t-shirt-printing"><br>1. T-shirt Printing</h3><p>3D printing is essentially chopping down objects into thin 2D surfaces and printing them on top of each other. So why don't we just stop the print after 2-3 layers to get a regular print on a surface ? And instead of on printbed, why not print on fabric ?</p><p>So I clamped an old t-shirt on to the print bed, removed the glass panel, and adjusted the end/stop switch for the z-axis to account for this change in height. Then i made a gcode for a 2mm thickness print and tried it out.</p><p>Things to keep in mind -</p><ul><li>Make sure the nozzle height is adjusted properly. If not this could drag the cloth with the nozzle moment, burning it or damaging the nozzle itself.</li><li>Keep the extruder temperature to a minimum. Make sure the temp is only what is required, this is because prints on white cloths left a dark shade at parts with thin print lines. That being said don't lower the temp so low that the extruder jams. Usually PLA has a range to temp that it can be used with, keep it at the lower end.</li><li>Have a good end script on your slicer. I have used a script that will lift the extruder 20mm and then home all axis. This will keep the rest of your t shirt that's dangling outside of the printbed safe.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/IMG_20190127_130119---Copy.jpg" class="kg-image"><figcaption>This is 1 layer thick print. Couldn't find images of other prints.</figcaption></figure><h3 id="2-gas-stove-knob-">2. Gas Stove Knob -</h3><p>This was my first time using the printer to get a fix for real life problem. Most of the time i just used it to print already available 3D models or for trying out fun stuff. This is the first time I modeled the 3D object that I wanted.</p><p>The knob/regulator of my old gas stove broke and its hard to find replacements for it. I tried searching it online and in some nearby shops. So I printed it. I used Tinkercad for this.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/IMG_20181231_215921.jpg" class="kg-image"><figcaption>First print that had an actual application 😅</figcaption></figure><h3 id="3-bike-keys-">3. Bike Keys - </h3><p>Just wanted to try out if it could be done. I was learning Autodesk Fusion 360 and wanted to model something along the way. I found that we can import images and use that as stencil to trace out objects. This will simplify the process and the dimensions will also be accurate, provided there is no skew in the images taken. </p><p>I wanted to model something a bit complex, and wanted it to be small so that i can print it with less time. The keys were next to me, so i took a few photos and got started. </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/IMG_20190205_225720---Copy.jpg" class="kg-image"><figcaption>3D Printed key.</figcaption></figure>
             </section>
         </article>
     </main>
