@@ -12,7 +12,7 @@
     <link href="/assets/css/style.min.css"  rel="stylesheet" type="text/css">
     <link href="../favicon.png" rel="shortcut icon">
     <meta name="description" content="This is a pipeline setup that works with a OTA library plus other OpenSource projects and services. You can setup your own pipeline for free of cost." />
-    <link rel="shortcut icon" href="../favicon.png" type="image/png" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="amp/" />
@@ -85,8 +85,72 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.18" />
+    <meta name="generator" content="Ghost 4.3" />
     <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../rss/index.rss" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://rbklabs.in/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 <body class="post-template tag-software">
     <header id="header" class="header cover-image animated fadeIn" style="background-image: url(https://images.unsplash.com/photo-1586588833333-08622b507265?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ)">
@@ -110,7 +174,7 @@
             <div class="hero-content">
                 <h1 class="post-title animated fadeInUp delay-1">CI / CD pipeline for ESP32</h1>
                 <div class="post-data">
-                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-07-11T23:26" title="2020-07-11 23:26">3 months ago</time></a></p>
+                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-07-11T23:26" title="2020-07-11 23:26">9 months ago</time></a></p>
                     <p class="post--read-time animated fadeInUp delay-3">5 min read</p>
                         <p class="post--tags animated fadeInUp delay-4"> <a href="../tag/software/">Software</a></p>
                 </div>
@@ -120,7 +184,7 @@
     <main id="main" class="main">
         <article class="animated fadeIn delay-5 post tag-software">
             <section class="content">
-                <blockquote><strong>Note:</strong><br>This is a pipeline setup that works with a custom OTA library that I wrote for ESP32, plus other OpenSource projects and services. You can setup your own pipeline for free of cost.</blockquote><h3 id="what-is-ci-cd">What is CI / CD </h3><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/07/cicd-pipeline-1024x355.png" class="kg-image"><figcaption>Pipeline steps. Image source <a href="https://www.plutora.com/">plutora</a>.</figcaption></figure><p><strong>CI or Continuous Integration </strong>-</p><p>CI is a set of steps for the developer to follow to maintain the standard of the codebase. This is the barebone structure of the process - </p><ol><li>Check in code in frequently.</li><li>Automate the build and test portion.</li><li>Always test the code locally before checking it in.</li><li>Never merge any failed branches to the main branch.</li><li>Return its status back to successful if you’re the developer who causes the failed build or test.</li><li>Make it your top priority to do so once the fail happens.</li></ol><p><strong>CD or Continuous Delivery/Deployment </strong>-</p><p>CD is more of continuation to CI. Generally the will be lot of work involved in order to deploy new application. Stop running processes, swap binaries, restart services in the required order and this is time consuming. The same applies even if its a on premise application, might be little simple, but still present. Create the right package - only the changes or the complete binaries, deploy on the CDS, notify user/application and handle the load.</p><p>So it is suitable to automate this process and in most of the time it remains constant through out the lifecycle of the application. CD can usually have different kinds of triggers, run a CD on commit, run a CD at specific time interval or have a manual trigger. </p><hr><h3 id="pipeline-in-hardware-projects">Pipeline in Hardware projects ?</h3><p></p><p>A CI/CD pipeline is almost always present in software based organizations. Without one its almost impossible to maintain quality and standard in the development and sanity of the master branch. All code goes through unit tests and the commits are run against automated test scripts or tested in sandbox envs.</p><p>But what about personal projects ? Especially Hardware projects ? when compared to software applications, in addition to all the steps involved, there is one more step of flashing to the board. So all the more reason to have a automated pipeline for this. </p><hr><h3 id="setup-your-own-pipeline-">Setup your own pipeline -</h3><p></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" class="kg-image"><figcaption>Photo by <a href="https://unsplash.com/@realaxer?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">tian kuan</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption></figure><p>There are two parts to this process, the client side or ESP code for checking for updates, and the backend side for CI/CD pipeline.  </p><p><strong>ESP32 / hardware side -</strong></p><p>Lets look at the ESP side, the board can either poll the server time to time, or if there is a persistent connection, the server can inform when there is an update available. As an IoT endpoint, such devices will generally not have a public IP or if it is low power based, connection cannot be kept alive. </p><p>But if there is a requirement for the update to delivered as soon as its available, MQTT can be used for so that server can notify, and its designed for low power consumption.</p><p>In my case, the update cycle is more relaxed. ESP periodically checks with backend if there are any updates, so there will be couple of minutes of delay before the ESP checks and downloads the update. This depends on the checking interval defined.</p><p>Going into more specifics, the ESP will ask the backend for the latest version of the ESP firmware. After we get the response, the version is checked against its own firmware. If the version on backend is greater, then the new firmware is downloaded. There is a MD5 check for the binary downloaded to make sure that it is the right file (no man-in-middle attack 😅) and there are not corruptions at downloading.  After the check is passed the new update is applied.</p><p>Its good to note that even if faulty binary is flashed as part of the OTA, the ESP will never be rendered dead. On the soft reset after the update, if the ESP is not able to boot, it will roll back to the previous version. This is possible because the update will be flashed to new partition and moving back to old firmware is as simple as changing partition address in the lookup table. A great <a href="https://www.youtube.com/watch" >video</a> on this if you are interested.</p><p>Right now the OTA library for ESP32 is in my  private repo, still needs some testing. I will add it here as soon as possible or checkout by GitHub repos.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/07/ota_esp_cropped.jpg" class="kg-image"><figcaption>Flow between ESP32 and the backend. Image source - <a href="https://www.youtube.com/watch" >Luca Dentella</a></figcaption></figure><p> <strong>Backend / dev pipeline -</strong></p><p>In this article I will be using GitHub for version control, Continuous Integration and Continuous Deployment. And PlatformIO as the framework for ESP32 projects, rather that arduino.</p><ol><li>Use your favorite IDE and create a project or make changes to existing one. I use VS Code as it has the PlatformIO as an extension within its marketplace.</li><li>Compile, test and verify the changes. Push to GitHub repo.</li><li>Use GitHub workflows / actions to automate the build and deploy.</li><li>Setup a CDN server to deliver the firmware binaries to ESPs.</li></ol><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/2c31221607517f9af9e2110ffc909b50.js"></script>
+                <blockquote><strong>Note:</strong><br>This is a pipeline setup that works with a custom OTA library that I wrote for ESP32, plus other OpenSource projects and services. You can setup your own pipeline for free of cost.</blockquote><h3 id="what-is-ci-cd">What is CI / CD </h3><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/07/cicd-pipeline-1024x355.png" class="kg-image" alt loading="lazy"><figcaption>Pipeline steps. Image source <a href="https://www.plutora.com/">plutora</a>.</figcaption></figure><p><strong>CI or Continuous Integration </strong>-</p><p>CI is a set of steps for the developer to follow to maintain the standard of the codebase. This is the barebone structure of the process - </p><ol><li>Check in code in frequently.</li><li>Automate the build and test portion.</li><li>Always test the code locally before checking it in.</li><li>Never merge any failed branches to the main branch.</li><li>Return its status back to successful if you’re the developer who causes the failed build or test.</li><li>Make it your top priority to do so once the fail happens.</li></ol><p><strong>CD or Continuous Delivery/Deployment </strong>-</p><p>CD is more of continuation to CI. Generally the will be lot of work involved in order to deploy new application. Stop running processes, swap binaries, restart services in the required order and this is time consuming. The same applies even if its a on premise application, might be little simple, but still present. Create the right package - only the changes or the complete binaries, deploy on the CDS, notify user/application and handle the load.</p><p>So it is suitable to automate this process and in most of the time it remains constant through out the lifecycle of the application. CD can usually have different kinds of triggers, run a CD on commit, run a CD at specific time interval or have a manual trigger. </p><hr><h3 id="pipeline-in-hardware-projects">Pipeline in Hardware projects ?</h3><p></p><p>A CI/CD pipeline is almost always present in software based organizations. Without one its almost impossible to maintain quality and standard in the development and sanity of the master branch. All code goes through unit tests and the commits are run against automated test scripts or tested in sandbox envs.</p><p>But what about personal projects ? Especially Hardware projects ? when compared to software applications, in addition to all the steps involved, there is one more step of flashing to the board. So all the more reason to have a automated pipeline for this. </p><hr><h3 id="setup-your-own-pipeline-">Setup your own pipeline -</h3><p></p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://images.unsplash.com/photo-1543674892-7d64d45df18b?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=2000&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjExNzczfQ" class="kg-image" alt loading="lazy"><figcaption>Photo by <a href="https://unsplash.com/@realaxer?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">tian kuan</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption></figure><p>There are two parts to this process, the client side or ESP code for checking for updates, and the backend side for CI/CD pipeline.  </p><p><strong>ESP32 / hardware side -</strong></p><p>Lets look at the ESP side, the board can either poll the server time to time, or if there is a persistent connection, the server can inform when there is an update available. As an IoT endpoint, such devices will generally not have a public IP or if it is low power based, connection cannot be kept alive. </p><p>But if there is a requirement for the update to delivered as soon as its available, MQTT can be used for so that server can notify, and its designed for low power consumption.</p><p>In my case, the update cycle is more relaxed. ESP periodically checks with backend if there are any updates, so there will be couple of minutes of delay before the ESP checks and downloads the update. This depends on the checking interval defined.</p><p>Going into more specifics, the ESP will ask the backend for the latest version of the ESP firmware. After we get the response, the version is checked against its own firmware. If the version on backend is greater, then the new firmware is downloaded. There is a MD5 check for the binary downloaded to make sure that it is the right file (no man-in-middle attack 😅) and there are not corruptions at downloading.  After the check is passed the new update is applied.</p><p>Its good to note that even if faulty binary is flashed as part of the OTA, the ESP will never be rendered dead. On the soft reset after the update, if the ESP is not able to boot, it will roll back to the previous version. This is possible because the update will be flashed to new partition and moving back to old firmware is as simple as changing partition address in the lookup table. A great <a href="https://www.youtube.com/watch" >video</a> on this if you are interested.</p><p>Right now the OTA library for ESP32 is in my  private repo, still needs some testing. I will add it here as soon as possible or checkout by GitHub repos.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/07/ota_esp_cropped.jpg" class="kg-image" alt loading="lazy"><figcaption>Flow between ESP32 and the backend. Image source - <a href="https://www.youtube.com/watch" >Luca Dentella</a></figcaption></figure><p> <strong>Backend / dev pipeline -</strong></p><p>In this article I will be using GitHub for version control, Continuous Integration and Continuous Deployment. And PlatformIO as the framework for ESP32 projects, rather that arduino.</p><ol><li>Use your favorite IDE and create a project or make changes to existing one. I use VS Code as it has the PlatformIO as an extension within its marketplace.</li><li>Compile, test and verify the changes. Push to GitHub repo.</li><li>Use GitHub workflows / actions to automate the build and deploy.</li><li>Setup a CDN server to deliver the firmware binaries to ESPs.</li></ol><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/2c31221607517f9af9e2110ffc909b50.js"></script>
 <style>
     .gist{
       width:100%;
@@ -132,7 +196,23 @@
     max-height:450px; // Any height
     overflow-y: visible;
 	}
-</style><!--kg-card-end: html--><p>There are three main sections in the workflow - Trigger, Env setup, Run process</p><p>Trigger - the YML scripts should have a trigger, when to start the workflow. In my script above, the scripts are executed on each push to the master branch on remote or on pull request (not required in my case 😅). </p><p>Env setup - Once the workflow starts, a virtual machine is given to you. You can choose the OS and its versions as well. I have picked latest version available of Ubuntu. Setup the Dev tools and libraries required to run your scripts. In the example above I have installed python and required libraries - platformIO and pyGitHub.</p><p>Run process - Execute your scripts in this newly setup machine to compile the code and test it. Also to deploy the build.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/6724828a6a9a3d7f726816d89a850bca.js"></script><!--kg-card-end: html--><p></p><p>The logic is simple, if the commit that triggered the Action has the Version defined which is more that the version on the cdn server, then this means that the code is meant to be deployed. So the new version details are updated in the cdn server and the binary is compiled for upload.</p><hr><h3 id="cdn-server-">CDN server- </h3><figure class="kg-card kg-image-card"><img src="../content/images/2020/07/aws-azure-google-1.png" class="kg-image"></figure><p>You can use any provider (aws, azure, google..) or setup a raspberry pi at home as a Content delivery Server. The function of this server is to serve static resource on request, so a free static resource services will be sufficient.</p><p>If you want some kind of processing or authentication to be performed at the backend, and you know that the updates are not very often, then FAAS like AWS Lambda or Google Functions can also be setup. This way you will only be charged per request (or processing duration) and no need to keep a server running all the time.</p><p>I have setup mine at - <a href="http://cdn.rbklabs.in/">http://cdn.rbklabs.in/</a> </p><hr><h3 id="that-s-all-folks">That's all folks</h3><p>You can now have a professional setup for your projects and don't have to worry about plugging out your board from the project and physically uploading the new code. Just push the commit and sit back 😊.</p><p></p>
+</style><!--kg-card-end: html--><p>There are three main sections in the workflow - Trigger, Env setup, Run process</p><p>Trigger - the YML scripts should have a trigger, when to start the workflow. In my script above, the scripts are executed on each push to the master branch on remote or on pull request (not required in my case 😅). </p><p>Env setup - Once the workflow starts, a virtual machine is given to you. You can choose the OS and its versions as well. I have picked latest version available of Ubuntu. Setup the Dev tools and libraries required to run your scripts. In the example above I have installed python and required libraries - platformIO and pyGitHub.</p><p>Run process - Execute your scripts in this newly setup machine to compile the code and test it. Also to deploy the build.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/6724828a6a9a3d7f726816d89a850bca.js"></script><!--kg-card-end: html--><p></p><p>The logic is simple, if the commit that triggered the Action has the Version defined which is more that the version on the cdn server, then this means that the code is meant to be deployed. So the new version details are updated in the cdn server and the binary is compiled for upload.</p><hr><h3 id="cdn-server-">CDN server- </h3><figure class="kg-card kg-image-card"><img src="../content/images/2020/07/aws-azure-google-1.png" class="kg-image" alt loading="lazy"></figure><p>You can use any provider (aws, azure, google..) or setup a raspberry pi at home as a Content delivery Server. The function of this server is to serve static resource on request, so a free static resource services will be sufficient.</p><p>If you want some kind of processing or authentication to be performed at the backend, and you know that the updates are not very often, then FAAS like AWS Lambda or Google Functions can also be setup. This way you will only be charged per request (or processing duration) and no need to keep a server running all the time.</p><p>I have setup mine at - <a href="http://cdn.rbklabs.in/">http://cdn.rbklabs.in/</a> </p><hr><h3 id="that-s-all-folks">That's all folks</h3><p>You can now have a professional setup for your projects and don't have to worry about plugging out your board from the project and physically uploading the new code. Just push the commit and sit back 😊.</p><p></p>
+            </section>
+
+            <section class="content">
+                <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = "https://rbklabs.in/ci-cd-pipeline-for-esp32/";
+                            this.page.identifier = "ghost-5f09f497824f0f24b0ff91c1"
+                        };
+                        (function() {
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://rbklabs.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
             </section>
         </article>
     </main>

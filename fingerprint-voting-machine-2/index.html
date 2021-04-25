@@ -12,7 +12,7 @@
     <link href="/assets/css/style.min.css"  rel="stylesheet" type="text/css">
     <link href="../favicon.png" rel="shortcut icon">
     <meta name="description" content="Biometric E-voting (EVM). Device that will first ask the user to scan his/her fingerprint in order to proceed with the voting." />
-    <link rel="shortcut icon" href="../favicon.png" type="image/png" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="amp/" />
@@ -85,8 +85,72 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.18" />
+    <meta name="generator" content="Ghost 4.3" />
     <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../rss/index.rss" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://rbklabs.in/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 <body class="post-template tag-electronics">
     <header id="header" class="header cover-image animated fadeIn" style="background-image: url(../content/images/size/w2000/2020/05/IMG_20180425_195409.jpg)">
@@ -110,7 +174,7 @@
             <div class="hero-content">
                 <h1 class="post-title animated fadeInUp delay-1">Fingerprint based Voting Machine</h1>
                 <div class="post-data">
-                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2018-06-24T00:00" title="2018-06-24 00:00">2 years ago</time></a></p>
+                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2018-06-24T00:00" title="2018-06-24 00:00">3 years ago</time></a></p>
                     <p class="post--read-time animated fadeInUp delay-3">1 min read</p>
                         <p class="post--tags animated fadeInUp delay-4"> <a href="../tag/electronics/">Electronics</a></p>
                 </div>
@@ -120,7 +184,23 @@
     <main id="main" class="main">
         <article class="animated fadeIn delay-5 post tag-electronics">
             <section class="content">
-                <p>Biometric E-voting was one of the final year project that was presented for engineering degree.</p><p>The concept is simple. One vote for one citizen.</p><p>Thus in this digital era it is only fair that the identity of the voter is biometrically verified before he impacts the future of the country. In this project we have designed a device that will first ask the user to scan his/her fingerprint in order to proceed with the voting. If the fingerprint is found in the records then the option to select the contesting party will be activated. Once the vote is registered by pressing the appropriate button which is next to the party name, it is saved and next person can cast the vote.</p><p>If the same person tries to vote multiple times, the device does not allow the same as the fingerprint would have been marked voted during the first vote. Since this is unique multiple votes can be prevented.</p><p></p><p>In practical implementations, fingerprints of all the citizens can be fetched from the  Aadhar details and a database can be formed against which the voter fingerprints can be verified.</p><p>This also means that the voter is not restricted to that specific booth and can vote from any voting station near him. This could also help in increasing voters percentage.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/VoterMachine-Insides.gif" class="kg-image"><figcaption>What's cooking Inside</figcaption></figure><p>The project employs a simple algorithm and is just a proof of concept.</p><p>It has 20 stored fingerprints in its database and one master/admin fingerprint that will be used to display the total votes of all contesting parties in the end. The device has 4 buttons each representing a different contestant. The LCD screen will display vital messages such as scan finger, cast vote and so on. The Red and Green LEDs also aid in indication of the processes going on.</p><figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/5EKiYO5rCx0?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>
+                <p>Biometric E-voting was one of the final year project that was presented for engineering degree.</p><p>The concept is simple. One vote for one citizen.</p><p>Thus in this digital era it is only fair that the identity of the voter is biometrically verified before he impacts the future of the country. In this project we have designed a device that will first ask the user to scan his/her fingerprint in order to proceed with the voting. If the fingerprint is found in the records then the option to select the contesting party will be activated. Once the vote is registered by pressing the appropriate button which is next to the party name, it is saved and next person can cast the vote.</p><p>If the same person tries to vote multiple times, the device does not allow the same as the fingerprint would have been marked voted during the first vote. Since this is unique multiple votes can be prevented.</p><p></p><p>In practical implementations, fingerprints of all the citizens can be fetched from the  Aadhar details and a database can be formed against which the voter fingerprints can be verified.</p><p>This also means that the voter is not restricted to that specific booth and can vote from any voting station near him. This could also help in increasing voters percentage.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/VoterMachine-Insides.gif" class="kg-image" alt loading="lazy"><figcaption>What's cooking Inside</figcaption></figure><p>The project employs a simple algorithm and is just a proof of concept.</p><p>It has 20 stored fingerprints in its database and one master/admin fingerprint that will be used to display the total votes of all contesting parties in the end. The device has 4 buttons each representing a different contestant. The LCD screen will display vital messages such as scan finger, cast vote and so on. The Red and Green LEDs also aid in indication of the processes going on.</p><figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/5EKiYO5rCx0?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>
+            </section>
+
+            <section class="content">
+                <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = "https://rbklabs.in/fingerprint-voting-machine-2/";
+                            this.page.identifier = "ghost-5eca6de5ff45ae4c10ca5d0c"
+                        };
+                        (function() {
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://rbklabs.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
             </section>
         </article>
     </main>
@@ -129,7 +209,7 @@
                     <p class="read-more-text">~ Read next post in Electronics ~</p>
                     <span class="post-title">Word Clock</span>
                     <div class="post-data">
-                        <p class="date">Posted by <span class="author">Rakshith BK</span> <time class="timesince" datetime="2018-09-24T00:00" title="2018-09-24 00:00">2 years ago</time></p>
+                        <p class="date">Posted by <span class="author">Rakshith BK</span> <time class="timesince" datetime="2018-09-24T00:00" title="2018-09-24 00:00">3 years ago</time></p>
                         <p class="post--read-time">2 min read</p>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
     <link href="/assets/css/style.min.css"  rel="stylesheet" type="text/css">
     <link href="../favicon.png" rel="shortcut icon">
     <meta name="description" content="Capacitive touch slider using ESP32 touch pins. Increase or decrease value based on swipe. Control volume, brightness, color, and much more." />
-    <link rel="shortcut icon" href="../favicon.png" type="image/png" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="amp/" />
@@ -85,8 +85,72 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.18" />
+    <meta name="generator" content="Ghost 4.3" />
     <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../rss/index.rss" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://rbklabs.in/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 <body class="post-template tag-electronics">
     <header id="header" class="header cover-image animated fadeIn" style="background-image: url(../content/images/size/w2000/2020/06/IMG_20200516_145112-1.jpg)">
@@ -110,7 +174,7 @@
             <div class="hero-content">
                 <h1 class="post-title animated fadeInUp delay-1">ESP32 Touch Slider-controller</h1>
                 <div class="post-data">
-                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-06-03T21:29" title="2020-06-03 21:29">4 months ago</time></a></p>
+                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-06-03T21:29" title="2020-06-03 21:29">a year ago</time></a></p>
                     <p class="post--read-time animated fadeInUp delay-3">3 min read</p>
                         <p class="post--tags animated fadeInUp delay-4"> <a href="../tag/electronics/">Electronics</a></p>
                 </div>
@@ -120,7 +184,7 @@
     <main id="main" class="main">
         <article class="animated fadeIn delay-5 post tag-electronics">
             <section class="content">
-                <p>One of the cool features of ESP32 is the touchpins, ie. the capacitive touch inputs system without the need of external circuits and even the complex discharge/ timing logic is neatly encapsulated in one API touchRead().</p><p>This is more of On/Off  example. What I wanted was a analog control, something like potentiometer. This is achievable if the motion of the finger across the surface is somehow translated into change in capacitance.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/download.gif" class="kg-image"><figcaption>Slider Control in Action.</figcaption></figure><h3 id="principle-of-operation">Principle of operation</h3><p>The capacitive slider surface can be of any shape and size you want. In this project I am simply using a strip of aluminium foil.</p><p>The main principle this works on is -</p><blockquote>Capacitance changes with increase/decrease in thickness of dielectric between the two electrodes.</blockquote><p>To leverage this I am creating a gradient of insulator on top of the aluminium foil to get this change in the capacitance from one end of the strip to another.</p><p>The choice of dielectric is clear plastic tape (sellotape), that is applied multiple layers. The tape is cut shorter by a few mm each time for the new layer applied on the aluminium foil. This will create a gradual increase in the thickness of the insulation over the strip. The change is still in terms of discreet steps, resolution of which should be decided based on the application and use case.</p><p>I could not take any good pictures to show the layering on my strip, so here's a 3D render of what it will look like -</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/mtal_strip.JPG" class="kg-image"><figcaption>Each translucent square is one sensitivity zone, so this strip has a resolution of 6.</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/dielectric_gradient.JPG" class="kg-image"><figcaption>The layers of tape gets shorter as visible, to change the dielectric thickness</figcaption></figure><hr><h3 id="code">Code</h3><p>The logic is to read the touch inputs repeatedly and check if the value has increased or decrease as compared to the previous reading. Each time such increase or decrease happens ideally your finger has moved from a point on the strip of one thickness to another point of different thickness.</p><p><strong><strong>By having a count of such increase/decrease, we can get an analog value reading as well as direction of swipe.</strong></strong> And this can be achieved from one GPIO pin of ESP32.</p><p>Note: The code provided in this project is more of an proof of concept than a finished library. A lot has to be refined and polished before turning this into a general purpose library that can be used along with others in a typical project.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/f69d29d2b7344cf97f98c91c262c1e66.js"></script>
+                <p>One of the cool features of ESP32 is the touchpins, ie. the capacitive touch inputs system without the need of external circuits and even the complex discharge/ timing logic is neatly encapsulated in one API touchRead().</p><p>This is more of On/Off  example. What I wanted was a analog control, something like potentiometer. This is achievable if the motion of the finger across the surface is somehow translated into change in capacitance.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/download.gif" class="kg-image" alt loading="lazy"><figcaption>Slider Control in Action.</figcaption></figure><h3 id="principle-of-operation">Principle of operation</h3><p>The capacitive slider surface can be of any shape and size you want. In this project I am simply using a strip of aluminium foil.</p><p>The main principle this works on is -</p><blockquote>Capacitance changes with increase/decrease in thickness of dielectric between the two electrodes.</blockquote><p>To leverage this I am creating a gradient of insulator on top of the aluminium foil to get this change in the capacitance from one end of the strip to another.</p><p>The choice of dielectric is clear plastic tape (sellotape), that is applied multiple layers. The tape is cut shorter by a few mm each time for the new layer applied on the aluminium foil. This will create a gradual increase in the thickness of the insulation over the strip. The change is still in terms of discreet steps, resolution of which should be decided based on the application and use case.</p><p>I could not take any good pictures to show the layering on my strip, so here's a 3D render of what it will look like -</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/mtal_strip.JPG" class="kg-image" alt loading="lazy"><figcaption>Each translucent square is one sensitivity zone, so this strip has a resolution of 6.</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/dielectric_gradient.JPG" class="kg-image" alt loading="lazy"><figcaption>The layers of tape gets shorter as visible, to change the dielectric thickness</figcaption></figure><hr><h3 id="code">Code</h3><p>The logic is to read the touch inputs repeatedly and check if the value has increased or decrease as compared to the previous reading. Each time such increase or decrease happens ideally your finger has moved from a point on the strip of one thickness to another point of different thickness.</p><p><strong><strong>By having a count of such increase/decrease, we can get an analog value reading as well as direction of swipe.</strong></strong> And this can be achieved from one GPIO pin of ESP32.</p><p>Note: The code provided in this project is more of an proof of concept than a finished library. A lot has to be refined and polished before turning this into a general purpose library that can be used along with others in a typical project.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/f69d29d2b7344cf97f98c91c262c1e66.js"></script>
 <style>
     .gist{
       width:100%;
@@ -132,7 +196,23 @@
     max-height:450px; // Any height
     overflow-y: visible;
 	}
-</style><!--kg-card-end: html--><hr><h3 id="slider-controller-in-my-project">Slider Controller in my project</h3><p>The resolution of the aluminium strip slider I made is very low (4 to be precise). And as a result of that the analog reading is not very accurate.</p><p>My initial idea was to change the color of the moon in a smooth manor according to the sliding on the strip. But the values read are not repeatable for the multiple slides of same manor. Hence I have repurposed it as a direction of swipe indicator.</p><p>I am increasing a Hue of the LED by a fixed value each time there is a swipe in one direction and decreasing by the same value for swipe in opposite direction.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/IMG_20200516_145112.jpg" class="kg-image"><figcaption>Aluminium strip at bottom acting as the touch slider.</figcaption></figure><figure class="kg-card kg-embed-card"><iframe width="612" height="344" src="https://www.youtube.com/embed/su5IlCfFFjM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>
+</style><!--kg-card-end: html--><hr><h3 id="slider-controller-in-my-project">Slider Controller in my project</h3><p>The resolution of the aluminium strip slider I made is very low (4 to be precise). And as a result of that the analog reading is not very accurate.</p><p>My initial idea was to change the color of the moon in a smooth manor according to the sliding on the strip. But the values read are not repeatable for the multiple slides of same manor. Hence I have repurposed it as a direction of swipe indicator.</p><p>I am increasing a Hue of the LED by a fixed value each time there is a swipe in one direction and decreasing by the same value for swipe in opposite direction.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/06/IMG_20200516_145112.jpg" class="kg-image" alt loading="lazy"><figcaption>Aluminium strip at bottom acting as the touch slider.</figcaption></figure><figure class="kg-card kg-embed-card"><iframe width="612" height="344" src="https://www.youtube.com/embed/su5IlCfFFjM?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure>
+            </section>
+
+            <section class="content">
+                <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = "https://rbklabs.in/esp32-touch-slider-controller/";
+                            this.page.identifier = "ghost-5ed67a79d06ab32e90935126"
+                        };
+                        (function() {
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://rbklabs.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
             </section>
         </article>
     </main>
@@ -141,7 +221,7 @@
                     <p class="read-more-text">~ Read next post in Electronics ~</p>
                     <span class="post-title">Upcycling broken Inkjet - GRBL Plotter</span>
                     <div class="post-data">
-                        <p class="date">Posted by <span class="author">Rakshith BK</span> <time class="timesince" datetime="2020-06-04T23:53" title="2020-06-04 23:53">4 months ago</time></p>
+                        <p class="date">Posted by <span class="author">Rakshith BK</span> <time class="timesince" datetime="2020-06-04T23:53" title="2020-06-04 23:53">a year ago</time></p>
                         <p class="post--read-time">3 min read</p>
                     </div>
                 </div>

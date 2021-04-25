@@ -12,7 +12,7 @@
     <link href="/assets/css/style.min.css"  rel="stylesheet" type="text/css">
     <link href="../favicon.png" rel="shortcut icon">
     <meta name="description" content="How to decode CAPTCHA and extract the text from it. In this article I will be using VTU website (vtu.ac.in) as an example to explain the process." />
-    <link rel="shortcut icon" href="../favicon.png" type="image/png" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
     <link rel="canonical" href="index.html" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="amp/" />
@@ -85,8 +85,72 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 3.18" />
+    <meta name="generator" content="Ghost 4.3" />
     <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../rss/index.rss" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://rbklabs.in/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #15171A;}</style>
 </head>
 <body class="post-template tag-software">
     <header id="header" class="header cover-image animated fadeIn" style="background-image: url(https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib&#x3D;rb-1.2.1&amp;q&#x3D;80&amp;fm&#x3D;jpg&amp;crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;w&#x3D;2000&amp;fit&#x3D;max&amp;ixid&#x3D;eyJhcHBfaWQiOjExNzczfQ)">
@@ -110,7 +174,7 @@
             <div class="hero-content">
                 <h1 class="post-title animated fadeInUp delay-1">Approach to decoding CAPTCHA</h1>
                 <div class="post-data">
-                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-05-31T21:41" title="2020-05-31 21:41">4 months ago</time></a></p>
+                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2020-05-31T21:41" title="2020-05-31 21:41">a year ago</time></a></p>
                     <p class="post--read-time animated fadeInUp delay-3">5 min read</p>
                         <p class="post--tags animated fadeInUp delay-4"> <a href="../tag/software/">Software</a></p>
                 </div>
@@ -120,7 +184,7 @@
     <main id="main" class="main">
         <article class="animated fadeIn delay-5 post tag-software">
             <section class="content">
-                <p></p><blockquote><strong>Note:</strong><br>This is something I worked on for one of my project. In the example I will be decoding the captch of VTU website, which is an University for Engineering courses and has captcha at results portal. <br>The approach detailed in this article is not a general purpose solution, but can be used for captchas of similar complexities.<br>This is NOT a ML based solution.</blockquote><p> </p><h3 id="preface">Preface</h3><p>VTU results page is known for its speed, reliability, performance and user-friendly interface. Or rather the lack of it. Every semester, even though the org knows exactly how many students will be looking forward for their results, it always fails to scale up their servers to cater to this load. It usually takes hours to get your results after they are released. The webpage does not load, the result request is not queried, or the whole website just crashes. And moreover the results of the previous semester will be wiped out before the new ones are uploaded. So there is no way for a student to get his last results (screenshot is the only option) or rather all his sem results in one place.</p><p>I wanted to create a website that would store these results, of all semesters and would display them on request. And this also falls under the web-scraping domain, which I wanted to do a project in. So I started to work on getting the details required, but the problem was the form to query the results also had a CAPTCHA.</p><p>So in this article i will be explaining the steps I took to decode them and convert to text so that I can get whats behind it.</p><hr><h3 id="the-captcha-image">The CAPTCHA image</h3><p>The image is not that complex when compared to other google captchas that has a lot of features like warping, tilt, blur, skew etc.. to consider in the text that has to be decoded.</p><p>Saying that, this took a bit of work as well, since I decided to solve this without additional libraries, just simple python. Using open source projects Tessaract or other OCRs will be a bit of overkill for this Image.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/yourcaptcha.jpeg" class="kg-image"><figcaption>captcha image in the results page of the website.</figcaption></figure><p>I saved a few such Images and found that the text is always at the center and in green color. And the entire image is covered in static/noise. </p><p>Initially I thought of extracting Green from the RGB matrix of the image, since the text that i want is entirely in green. But this didn't work as there was a lot of noise pixels that were in green also. What worked is a simple thresholding of the image.<br>Converted my image to monochrome/binary with appropriate threshold value to select between black pixel or white pixel worked far better than I had imagined.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/ff9eb3ab97f534be6acf5922de09323d.js"></script><!--kg-card-end: html--><p>Output of this thresholding captcha -</p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="../content/images/2020/05/yourcaptcha-2.jpeg" width="176" height="35"></div><div class="kg-gallery-image"><img src="../content/images/2020/05/captcha_Thresh-1.jpeg" width="176" height="35"></div></div></div></figure><p>Now that the text is clear, next is the OCR part of actually converting the contents on the image to usable text. Before that I had saved bunch of images and there was a pattern emerging, all the characters occupied same space at the middle of the image. And to visualize it better, I used this <a href="https://www.dcode.fr/binary-image">web-tool</a> to convert the pixels to text characters and saved it.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/vtu_captcha_word_doc.JPG" class="kg-image"><figcaption>Each character in that text is a pixel in binary.</figcaption></figure><p>Some points that came out about this captcha now-</p><ol><li>The text is always at the center and starts at <code>[60,11]</code> ie. top left corner and ends at <code>[113, 23]</code> ie. bottom right corner.</li><li>Each character in the text occupies exactly the same number of pixels ie- same height and width. Which means a rectangle mask can be used to extract each individual char. The dimensions of this mask <code>8 X 12</code>.</li></ol><hr><h3 id="manual-labeling">Manual Labeling </h3><p>Now that we know the dimensions and position of the charterers in the image and we have removed the noise, the next step is to isolate each character and start labeling. This is one step that is not automated, but is also one-time requirement.</p><p>Using a small script, I downloaded a bunch of captchas and chopped them down to individual characters and saved each one with different number as file name.<br>During the process I found out that characters -   <code>I L O i l o 1 0</code>  are not used. Which is actually quite obvious when you think about it, they are hard to distinguish from each other in several fonts.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/1a54149e185e9ef47d71950261859f26.js"></script>
+                <p></p><blockquote><strong>Note:</strong><br>This is something I worked on for one of my project. In the example I will be decoding the captch of VTU website, which is an University for Engineering courses and has captcha at results portal. <br>The approach detailed in this article is not a general purpose solution, but can be used for captchas of similar complexities.<br>This is NOT a ML based solution.</blockquote><p> </p><h3 id="preface">Preface</h3><p>VTU results page is known for its speed, reliability, performance and user-friendly interface. Or rather the lack of it. Every semester, even though the org knows exactly how many students will be looking forward for their results, it always fails to scale up their servers to cater to this load. It usually takes hours to get your results after they are released. The webpage does not load, the result request is not queried, or the whole website just crashes. And moreover the results of the previous semester will be wiped out before the new ones are uploaded. So there is no way for a student to get his last results (screenshot is the only option) or rather all his sem results in one place.</p><p>I wanted to create a website that would store these results, of all semesters and would display them on request. And this also falls under the web-scraping domain, which I wanted to do a project in. So I started to work on getting the details required, but the problem was the form to query the results also had a CAPTCHA.</p><p>So in this article i will be explaining the steps I took to decode them and convert to text so that I can get whats behind it.</p><hr><h3 id="the-captcha-image">The CAPTCHA image</h3><p>The image is not that complex when compared to other google captchas that has a lot of features like warping, tilt, blur, skew etc.. to consider in the text that has to be decoded.</p><p>Saying that, this took a bit of work as well, since I decided to solve this without additional libraries, just simple python. Using open source projects Tessaract or other OCRs will be a bit of overkill for this Image.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/yourcaptcha.jpeg" class="kg-image" alt loading="lazy"><figcaption>captcha image in the results page of the website.</figcaption></figure><p>I saved a few such Images and found that the text is always at the center and in green color. And the entire image is covered in static/noise. </p><p>Initially I thought of extracting Green from the RGB matrix of the image, since the text that i want is entirely in green. But this didn't work as there was a lot of noise pixels that were in green also. What worked is a simple thresholding of the image.<br>Converted my image to monochrome/binary with appropriate threshold value to select between black pixel or white pixel worked far better than I had imagined.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/ff9eb3ab97f534be6acf5922de09323d.js"></script><!--kg-card-end: html--><p>Output of this thresholding captcha -</p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="../content/images/2020/05/yourcaptcha-2.jpeg" width="176" height="35" loading="lazy" alt></div><div class="kg-gallery-image"><img src="../content/images/2020/05/captcha_Thresh-1.jpeg" width="176" height="35" loading="lazy" alt></div></div></div></figure><p>Now that the text is clear, next is the OCR part of actually converting the contents on the image to usable text. Before that I had saved bunch of images and there was a pattern emerging, all the characters occupied same space at the middle of the image. And to visualize it better, I used this <a href="https://www.dcode.fr/binary-image">web-tool</a> to convert the pixels to text characters and saved it.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/05/vtu_captcha_word_doc.JPG" class="kg-image" alt loading="lazy"><figcaption>Each character in that text is a pixel in binary.</figcaption></figure><p>Some points that came out about this captcha now-</p><ol><li>The text is always at the center and starts at <code>[60,11]</code> ie. top left corner and ends at <code>[113, 23]</code> ie. bottom right corner.</li><li>Each character in the text occupies exactly the same number of pixels ie- same height and width. Which means a rectangle mask can be used to extract each individual char. The dimensions of this mask <code>8 X 12</code>.</li></ol><hr><h3 id="manual-labeling">Manual Labeling </h3><p>Now that we know the dimensions and position of the charterers in the image and we have removed the noise, the next step is to isolate each character and start labeling. This is one step that is not automated, but is also one-time requirement.</p><p>Using a small script, I downloaded a bunch of captchas and chopped them down to individual characters and saved each one with different number as file name.<br>During the process I found out that characters -   <code>I L O i l o 1 0</code>  are not used. Which is actually quite obvious when you think about it, they are hard to distinguish from each other in several fonts.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/1a54149e185e9ef47d71950261859f26.js"></script>
 <style>
     .gist{
       width:100%;
@@ -132,7 +196,23 @@
     max-height:450px; // Any height
     overflow-y: visible;
 	}
-</style><!--kg-card-end: html--><p></p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="../content/images/2020/05/vtu_captcha_data_small.JPG" width="766" height="550"></div><div class="kg-gallery-image"><img src="../content/images/2020/05/vtu_captcha_data_caps_nums.JPG" width="766" height="551"></div></div></div></figure><hr><h3 id="turning-into-dataset">Turning into Dataset </h3><p>Converting this set of labeled Images into usable dataset is actually pretty simple. All you have to do is store it in a Dictionary with character as key and its pixel content as value. And save this data to a file, so that it can be used.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/1ab984091a3115b7d88015979ae16d86.js"></script><!--kg-card-end: html--><hr><h3 id="using-the-dataset">Using the Dataset</h3><p>Now that we have the captcha character's data in a file, this can be used in other projects that need solving/ image to text capabilities for this captcha. </p><ol><li>Fetch the captcha image for your request.</li><li>De-Noise the image with the same process used in the captcha dataset creation process.</li><li>Crop the de-noised image into its respective characters.</li><li>Load the captcha dataset and compare the image pixel data of the cropped image with the pixel data of all characters present in the dataset. Take a <code>possible match</code> value for each comparison and in the end the character with maximum value for <code>possible match</code> is the most probable/ identified Character.</li></ol><p>In my project this probability value for the right comparison was almost always 1 (ranged between 90 - 100% due to noise pixels near character in some cases). Which means it can identify the character with perfect accuracy.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/8f3ab9872da5f642218cee6a17e7cb31.js"></script><!--kg-card-end: html--><p>In the above code - <br>The image is first cropped into individual characters and saved for debug purposes. The data set <code>CaptchaJSON.json</code> is loaded for decoding the saved character images. Since I found that my prediction works with good accuracy (almost 1), if the predicted probability goes below 0.7, this function prints a warning message. (Explaining the snippet, I case you choose to use it in your code).</p><hr><h3 id="conclusion">Conclusion</h3><p>I have no background in Image Processing and honestly had no idea where to start when I was stuck with this captcha. This was one of the reason why I did not go the ML or tesseract way. Most of the processes there are gibberish to me and poking around the captcha showed that learning such libraries was way too much effort for solving this issue at hand. Anyway, It actually worked quite better than I had expected. I was just hoping for an accuracy of <code>0.6 - 0.7</code>, ended up getting close to <code>1</code>.</p><p>Thanks for sticking so long and I hope this article gave you a perspective on how to approach <em>solving an image-to-text problem.</em></p>
+</style><!--kg-card-end: html--><p></p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"><img src="../content/images/2020/05/vtu_captcha_data_small.JPG" width="766" height="550" loading="lazy" alt srcset="../content/images/size/w600/2020/05/vtu_captcha_data_small.JPG 600w, ../content/images/2020/05/vtu_captcha_data_small.JPG 766w" sizes="(min-width: 720px) 720px"></div><div class="kg-gallery-image"><img src="../content/images/2020/05/vtu_captcha_data_caps_nums.JPG" width="766" height="551" loading="lazy" alt srcset="../content/images/size/w600/2020/05/vtu_captcha_data_caps_nums.JPG 600w, ../content/images/2020/05/vtu_captcha_data_caps_nums.JPG 766w" sizes="(min-width: 720px) 720px"></div></div></div></figure><hr><h3 id="turning-into-dataset">Turning into Dataset </h3><p>Converting this set of labeled Images into usable dataset is actually pretty simple. All you have to do is store it in a Dictionary with character as key and its pixel content as value. And save this data to a file, so that it can be used.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/1ab984091a3115b7d88015979ae16d86.js"></script><!--kg-card-end: html--><hr><h3 id="using-the-dataset">Using the Dataset</h3><p>Now that we have the captcha character's data in a file, this can be used in other projects that need solving/ image to text capabilities for this captcha. </p><ol><li>Fetch the captcha image for your request.</li><li>De-Noise the image with the same process used in the captcha dataset creation process.</li><li>Crop the de-noised image into its respective characters.</li><li>Load the captcha dataset and compare the image pixel data of the cropped image with the pixel data of all characters present in the dataset. Take a <code>possible match</code> value for each comparison and in the end the character with maximum value for <code>possible match</code> is the most probable/ identified Character.</li></ol><p>In my project this probability value for the right comparison was almost always 1 (ranged between 90 - 100% due to noise pixels near character in some cases). Which means it can identify the character with perfect accuracy.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/8f3ab9872da5f642218cee6a17e7cb31.js"></script><!--kg-card-end: html--><p>In the above code - <br>The image is first cropped into individual characters and saved for debug purposes. The data set <code>CaptchaJSON.json</code> is loaded for decoding the saved character images. Since I found that my prediction works with good accuracy (almost 1), if the predicted probability goes below 0.7, this function prints a warning message. (Explaining the snippet, I case you choose to use it in your code).</p><hr><h3 id="conclusion">Conclusion</h3><p>I have no background in Image Processing and honestly had no idea where to start when I was stuck with this captcha. This was one of the reason why I did not go the ML or tesseract way. Most of the processes there are gibberish to me and poking around the captcha showed that learning such libraries was way too much effort for solving this issue at hand. Anyway, It actually worked quite better than I had expected. I was just hoping for an accuracy of <code>0.6 - 0.7</code>, ended up getting close to <code>1</code>.</p><p>Thanks for sticking so long and I hope this article gave you a perspective on how to approach <em>solving an image-to-text problem.</em></p>
+            </section>
+
+            <section class="content">
+                <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = "https://rbklabs.in/captcha-solver/";
+                            this.page.identifier = "ghost-5ed3851aa4bfbc14589a5255"
+                        };
+                        (function() {
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://rbklabs.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
             </section>
         </article>
     </main>
@@ -141,7 +221,7 @@
                     <p class="read-more-text">~ Read next post in Software ~</p>
                     <span class="post-title">CI / CD pipeline for ESP32</span>
                     <div class="post-data">
-                        <p class="date">Posted by <span class="author">Rakshith BK</span> <time class="timesince" datetime="2020-07-11T23:26" title="2020-07-11 23:26">3 months ago</time></p>
+                        <p class="date">Posted by <span class="author">Rakshith BK</span> <time class="timesince" datetime="2020-07-11T23:26" title="2020-07-11 23:26">9 months ago</time></p>
                         <p class="post--read-time">5 min read</p>
                     </div>
                 </div>
