@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <title>Chat App using Flutter</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic" rel="stylesheet" type="text/css">
+    <link href="/assets/css/style.min.css"  rel="stylesheet" type="text/css">
+    <link href="../favicon.png" rel="shortcut icon">
+    <meta name="description" content="Learn how to build a fully functional chat app using Flutter and Firebase with features like profile picture, local storage.. Complete source code included." />
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/" />
+    
+    <meta property="og:site_name" content="RBKlabs" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Chat App using Flutter" />
+    <meta property="og:description" content="Learn how to build a fully functional chat app using Flutter and Firebase with features like profile picture, local storage.. Complete source code included." />
+    <meta property="og:url" content="https://rbklabs.in/chat-app-flutter/" />
+    <meta property="og:image" content="https://rbklabs.in/content/images/2021/05/mainScreenshot.png" />
+    <meta property="article:published_time" content="2021-05-09T08:08:45.000Z" />
+    <meta property="article:modified_time" content="2021-05-09T09:55:29.000Z" />
+    <meta property="article:tag" content="Software" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chat App using Flutter" />
+    <meta name="twitter:description" content="Learn how to build a fully functional chat app using Flutter and Firebase with features like profile picture, local storage.. Complete source code included." />
+    <meta name="twitter:url" content="https://rbklabs.in/chat-app-flutter/" />
+    <meta name="twitter:image" content="https://rbklabs.in/content/images/2021/05/mainScreenshot.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rakshith BK" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Software" />
+    <meta property="og:image:width" content="663" />
+    <meta property="og:image:height" content="685" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "RBKlabs",
+        "url": "https://rbklabs.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/no_bg_xtra_large.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rakshith BK",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/profile_photo_rbklabs.jpeg",
+            "width": 901,
+            "height": 907
+        },
+        "url": "https://rbklabs.in/author/rakshith/",
+        "sameAs": [
+            "https://github.com/rakshithbk"
+        ]
+    },
+    "headline": "Chat App using Flutter",
+    "url": "https://rbklabs.in/chat-app-flutter/",
+    "datePublished": "2021-05-09T08:08:45.000Z",
+    "dateModified": "2021-05-09T09:55:29.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://rbklabs.in/content/images/2021/05/mainScreenshot.png",
+        "width": 663,
+        "height": 685
+    },
+    "keywords": "Software",
+    "description": "\n\nFlutter [https://flutter.dev/]is an open-source mobile SDK from Google to build\nnative applications for multiple platforms from a single codebase. Flutter uses\na programming language called Dart [https://dart.dev/], which is similar to\ncombination of C++ and JS. It is a Object oriented, garbage collected, strongly\ntyped language that can compile to JS or Native code directly.\n\nSince I did not know any mobile app development technologies, this got my\nattention as learning this would mean I can ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rbklabs.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../rss/index.rss" />
+    <script defer src="https://unpkg.com/@tryghost/portal@~1.1.0/umd/portal.min.js" data-ghost="https://rbklabs.in/"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style><style>:root {--ghost-accent-color: #15171A;}</style>
+</head>
+<body class="post-template tag-software">
+    <header id="header" class="header cover-image animated fadeIn" style="background-image: url(../content/images/size/w2000/2021/05/mainScreenshot.png)">
+        <section class="header--top">
+            <div>
+    <a class="blog-title " href="../">
+            <img class="blog-logo" src="../content/images/2020/05/no_bg_xtra_large.png" alt="Blog Logo" />
+    </a>
+    
+</div>
+<nav class="blog-navigation">
+    <ul>
+        <!-- Loop through the navigation items -->
+            <li class="nav-home"><a href="../"><span class="label">Home</span></a></li>
+            <li class="nav-tag"><a href="../my-tags/"><span class="label">Tag</span></a></li>
+            <li class="nav-author"><a href="../author/rakshith/"><span class="label">Author</span></a></li>
+        <!-- End the loop -->
+    </ul>
+</nav>        </section>
+        <section class="hero post-meta">
+            <div class="hero-content">
+                <h1 class="post-title animated fadeInUp delay-1">Basic Chat App - Flutter</h1>
+                <div class="post-data">
+                    <p class="date animated fadeInUp delay-2">Posted by <span class="author"><a href="../author/rakshith/">Rakshith BK</a></span> <a href="index.html"><time class="timesince" datetime="2021-05-09T13:38" title="2021-05-09 13:38">2 hours ago</time></a></p>
+                    <p class="post--read-time animated fadeInUp delay-3">7 min read</p>
+                        <p class="post--tags animated fadeInUp delay-4"> <a href="../tag/software/">Software</a></p>
+                </div>
+            </div>
+        </section>
+    </header>
+    <main id="main" class="main">
+        <article class="animated fadeIn delay-5 post tag-software">
+            <section class="content">
+                <p></p><p><a href="https://flutter.dev/">Flutter </a>is an open-source mobile SDK from Google to build native applications for multiple platforms from a single codebase. Flutter uses a programming language called <a href="https://dart.dev/">Dart</a>, which is similar to combination of C++ and JS. It is a Object oriented, garbage collected, strongly typed language that can compile to JS or Native code directly.</p><p>Since I did not know any mobile app development technologies, this got my attention as learning this would mean I can build apps for multi-platforms without having to learn multiple languages or frameworks. This chatting application is one of my first app that I made while trying to learn Dart and Flutter. Now that I look back on the code, few thing could have be written better 😁.</p><p>Rather than looking at tutorial videos where the main focus will be on explaining flutter and the UI will be awful, I chose to search for ideas on design/artist networking websites such as dribble and found a design that is simple to make yet elegant. <a href="https://search.muz.li/NDdkNDdkYmJj">This</a> is the final UI design idea I went ahead and implemented in this project.</p><!--kg-card-begin: html--><video height="570" width="270" poster="../content/images/2021/05/mainScreenshot_o.png" autoplay loop muted>
+<source src="../content/images/2021/05/chat_app_video.mp4">
+<p class="warning">Your browser does not support HTML5 video.</p>
+</video><!--kg-card-end: html--><p></p><h3 id="app-features">App Features</h3><p>Some of the applications features/capabilities that are added in this project -</p><ul><li>Signup/Login with emailID and password</li><li>Auto update of contact/users list when new people register or update</li><li>Chat auto scroll on new message arival</li><li>Emoji keyboard</li><li>Profile photo selection from camera or gallary</li><li>Update display Name option</li><li>Random background image (only visible to you in drawer screen)</li><li>Notifications on new massages using FCM</li><li>Store user list and meta information on device disk</li></ul><h3 id="app-architecture">App Architecture</h3><p>Lets look at the brief overview of the application and backend. Since the intent of this project was to learn flutter, most of the heavy lifting is done in the client side and backend is mostly serverless implementation with the help of <a href="https://firebase.google.com/">Firebase</a>.</p><figure class="kg-card kg-image-card"><img src="../content/images/2021/05/chat_app_architecture.png" class="kg-image" alt loading="lazy" width="422" height="538"></figure><p>Here Firebase is the main endpoint for our chat app, for registering new users and authentication, chat messages and notifications. </p><p><strong>Firebase Authentication</strong> - </p><p>Is used for new registration and auth of existing users. In this project we are only using auth by username-password combinations. Firebase also supports other auth types such as social media (Google, Facebook, Twitter), phone, Apple, GitHub etc..  </p><p>Each user when they register will get a unique Auth ID in this section. This will be used thought out the application to identify the user and provide services to him. The Firebase console also neatly displays the registered users for the app along with UID, which will be helpful for debugging if needed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/image.png" class="kg-image" alt loading="lazy" width="1358" height="554" srcset="../content/images/size/w600/2021/05/image.png 600w, ../content/images/size/w1000/2021/05/image.png 1000w, ../content/images/2021/05/image.png 1358w" sizes="(min-width: 720px) 720px"><figcaption>Auth dashboard in Firebase console</figcaption></figure><p></p><p><strong>Firebase Firestore</strong> - </p><p>Is the main runner of the show. It is a Realtime document database that we use for storing chats. When a user sends a new message, this database is updated and the other party listening to this particular document will also receive this update, without the need of polling.</p><p>In the project we use Firebase into two main documents - users and chats.<br>Users will maintain all registered users of the app, along with data such as Name, email, UID, Push notification ID, profile Image.<br>Chats will maintain the user chats with other users. Here the UID pair of the users between whom the conversation is happening is used as the key to store the messages. Hence chats between different users will have different UID pairs and will show as independent channels in the Firestore. </p><p>Along with the message content, other metadata such as sent time, From and To UID and message type is also saved. The type field is for extending this in the future to enable sending or GIFs or video links. In this case the type will be, for example 1 for GIF and 2-Video, and the content field will be treated as URL link to that media in such cases. This info can be used at the client side to provide rich display or render the media accordingly.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/image-1.png" class="kg-image" alt loading="lazy" width="1358" height="503" srcset="../content/images/size/w600/2021/05/image-1.png 600w, ../content/images/size/w1000/2021/05/image-1.png 1000w, ../content/images/2021/05/image-1.png 1358w" sizes="(min-width: 720px) 720px"><figcaption>User document storing user meta in Firestore&nbsp;</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/image-2.png" class="kg-image" alt loading="lazy" width="1343" height="487" srcset="../content/images/size/w600/2021/05/image-2.png 600w, ../content/images/size/w1000/2021/05/image-2.png 1000w, ../content/images/2021/05/image-2.png 1343w" sizes="(min-width: 720px) 720px"><figcaption>Chats document storing messages in Firestore</figcaption></figure><p></p><p><strong>Firebase Storage</strong> - </p><p>Is a simple object storage service that is only used for storing the user profile picture. It is simple as it comes integrated within Firebase ecosystem and has access to user auth ID. This ID will be used to make sure that one user will store atmost one image file in this bucket. Once the user updates this profile image, the older file will be overwritten with new one. For now there is no option to send multimedia in this chat application, as this will add to the storage costs.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/image-3.png" class="kg-image" alt loading="lazy" width="1350" height="558" srcset="../content/images/size/w600/2021/05/image-3.png 600w, ../content/images/size/w1000/2021/05/image-3.png 1000w, ../content/images/2021/05/image-3.png 1350w" sizes="(min-width: 720px) 720px"><figcaption>Profile picture files in Firebase Storage</figcaption></figure><p></p><p><strong>Firebase Cloud Messaging</strong> - </p><p>Is the successor of GCM and is a cross platform push notification service that is provided free of cost. Each user when they register for the chat app will also get a FCM ID.  This will be stored in the user meta data on the Firestore User document. </p><p>In this project we are using this to send push notification to the user on arrival of new messages. After the client sends the message to the user, through Firestore, the client will also send a push notification request to the recipient FCM ID. If the recipient does not have the app open, it will show a notification of new message and short text content.</p><p>Unlike other services, push notifications sent from the client will not show up in the Firebase console, so no image for this section 😁.</p><hr><h3 id="client-code-explanation">Client code explanation</h3><p></p><p>The main heart of the application is the Firebase SKDs or packages for each of its services in Dart.</p><!--kg-card-begin: markdown--><pre><code class="language-yaml">  firebase_core: ^1.0.1
+  firebase_auth: ^1.0.1
+  cloud_firestore: ^1.0.1
+  firebase_storage: ^8.0.0
+  firebase_messaging: ^9.0.0
+</code></pre>
+<!--kg-card-end: markdown--><p>These packages provide a simple and clean way to write your application logic by abstracting away all the API calls required to maintain connection and tokens to use the services. They also support Streams in Dart which is a great way to subscribe to the service and get updates in realtime when something changes. </p><p>For example in the below snippet you can see the Auth implementation, where if the <code>firebase_auth</code> package will maintain the session info and will automatically update in case of session expiry so that the app can show login screen again.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/c7b1f306e360d3029ee19a374343d2a4.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><p></p><p>This is the same approach used in the contacts screen as well as chat messages display screen. The client will subscribe to changes in the respective Firestore document and using <code>StreamBuilder</code>  in Dart, it will automatically refresh the widget to display the changes. So whenever a new message is received, the <code>ListView</code> widget will be updated to show the new message without the need to write any additional code for this.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/99e4e6f67f576cf829c891872487c3cb.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><p></p><p>Apart from the basic chatting capabilities, this app also has a settings screen where the user can update his/her profile picture and display name. Here I am using the package <code>image_picker</code> to provide feature of selecting image either from files or camera. <br>Once the user selects the new image, we can show the preview in the avatar section and after Update button is pressed, the client will upload this new image to Firestore Storage with user UID as the filename. This will return the image URL for the stored image, which will be updated in the user meta data of Firestore document.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/5c2ce28cb7f3d12c8655b31c9505b7e7.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><p></p><p>The push notifications is something that I struggled a bit to implement. First important point I was not aware of is that this will not work properly in the Android Emulators, which I was using during the project to test out code. Second is that for the app to act on the push notifications, additional steps have to be done such as registering a callback function that will be called when the application in the background.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/bfd88245f6222d8abf6bde285f6c466b.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><p><br>I have configured this so that when the user click on the notification message the app will open the chat screen of that corresponding user so that he can continue the chat. We get the From UID in the push notification, which can be passed to chat screen along with other parameters to open the right chat. </p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/fb93179cd7645939f94be7ef1be9183b.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><p></p><p>Sending a notification is straight forward. I am using <code>dio</code> package to make the http POST to send the message to <em>https://fcm.googleapis.com/fcm/send</em>, since this is not provided as part of the <code>firebase_messaging</code> package. <br>FCM notification structure has two main components - data message and notification message. Data can have custom key:value pairs and client is responsible for  processing this section. Notification part is automatically displayed to the user as part of the client app. It has predefined keys like title and body.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/4ec9fdb48f101531eaaec1fa377f8e91.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><p></p><p>The approach taken in this project is that all the chats and contacts are stored in Firebase. So each time user clicks on that app, the contact list is loaded from backend. Same for the chats, when user clicks on the contact, the corresponding chats are fetched and displayed. But I wanted to try out local storage/persistance as well. Here I am using a package called <code>hive</code>. This a simple and fast key-value database. The reason this was chosen was that the data structure to be stored is not complex and the performance of hive is better that SQL.<br>In this project I am only storing contact list along with meta information like last message, timestamp, UID etc..<br>So in the totality your device will contain contact list of the chat app, data related to Firebase tokens and auth, cached images that were downloaded.</p><p></p><!--kg-card-begin: html--><script src="https://gist.github.com/rakshithbk/5f1958eddaf672f37350a56f806df628.js"></script>
+<style>
+    .gist{
+      width:100%;
+   	  & table{
+        table-layout: fixed;
+  	  }
+ 	}
+    .gist-data{
+    max-height:450px; // Any height
+    overflow-y: visible;
+	}
+</style><!--kg-card-end: html--><hr><h3 id="clone-and-build-your-own-app">Clone and build your own app</h3><p>Complete source code is available on GitHub along with instructions to get you started on building the app - </p><p></p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/rakshithbk/flutter-chat-app"><div class="kg-bookmark-content"><div class="kg-bookmark-title">rakshithbk/flutter-chat-app</div><div class="kg-bookmark-description">Contribute to rakshithbk/flutter-chat-app development by creating an account on GitHub.</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg"><span class="kg-bookmark-author">GitHub</span><span class="kg-bookmark-publisher">rakshithbk</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://opengraph.githubassets.com/253d0fa5c70d44c396bc64fb408b549523626af6266f8884eb800fa234f9a13c/rakshithbk/flutter-chat-app"></div></a></figure>
+            </section>
+
+            <section class="content">
+                <div id="disqus_thread"></div>
+                    <script>
+                        var disqus_config = function () {
+                            this.page.url = "https://rbklabs.in/chat-app-flutter/";
+                            this.page.identifier = "ghost-608945d219a12b24808cb02d"
+                        };
+                        (function() {
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://rbklabs.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+            </section>
+        </article>
+    </main>
+
+
+    <footer class="footer animated fadeIn" id="footer">
+        <section class="bottom">
+    <section class="attribution">
+        <a href="https://github.com/rakshithbk"> Rakshith BK | Personal Blog, Made with <i class="heart"></i></a>.
+    </section>
+</section>
+    </footer>
+    
+    <script type="text/javascript" src="/assets/js/Saga.js" ></script>
+</body>
+</html>

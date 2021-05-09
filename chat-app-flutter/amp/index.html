@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Chat App using Flutter</title>
+
+    <meta name="description" content="Learn how to build a fully functional chat app using Flutter and Firebase with features like profile picture, local storage.. Complete source code included." />
+    <link rel="icon" href="../../favicon.png" type="image/png" />
+    <link rel="canonical" href="../" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="RBKlabs" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Chat App using Flutter" />
+    <meta property="og:description" content="Learn how to build a fully functional chat app using Flutter and Firebase with features like profile picture, local storage.. Complete source code included." />
+    <meta property="og:url" content="https://rbklabs.in/chat-app-flutter/" />
+    <meta property="og:image" content="https://rbklabs.in/content/images/2021/05/mainScreenshot.png" />
+    <meta property="article:published_time" content="2021-05-09T08:08:45.000Z" />
+    <meta property="article:modified_time" content="2021-05-09T09:55:29.000Z" />
+    <meta property="article:tag" content="Software" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Chat App using Flutter" />
+    <meta name="twitter:description" content="Learn how to build a fully functional chat app using Flutter and Firebase with features like profile picture, local storage.. Complete source code included." />
+    <meta name="twitter:url" content="https://rbklabs.in/chat-app-flutter/" />
+    <meta name="twitter:image" content="https://rbklabs.in/content/images/2021/05/mainScreenshot.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rakshith BK" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Software" />
+    <meta property="og:image:width" content="663" />
+    <meta property="og:image:height" content="685" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "RBKlabs",
+        "url": "https://rbklabs.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/no_bg_xtra_large.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rakshith BK",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/profile_photo_rbklabs.jpeg",
+            "width": 901,
+            "height": 907
+        },
+        "url": "https://rbklabs.in/author/rakshith/",
+        "sameAs": [
+            "https://github.com/rakshithbk"
+        ]
+    },
+    "headline": "Chat App using Flutter",
+    "url": "https://rbklabs.in/chat-app-flutter/",
+    "datePublished": "2021-05-09T08:08:45.000Z",
+    "dateModified": "2021-05-09T09:55:29.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://rbklabs.in/content/images/2021/05/mainScreenshot.png",
+        "width": 663,
+        "height": 685
+    },
+    "keywords": "Software",
+    "description": "\n\nFlutter [https://flutter.dev/]is an open-source mobile SDK from Google to build\nnative applications for multiple platforms from a single codebase. Flutter uses\na programming language called Dart [https://dart.dev/], which is similar to\ncombination of C++ and JS. It is a Object oriented, garbage collected, strongly\ntyped language that can compile to JS or Native code directly.\n\nSince I did not know any mobile app development technologies, this got my\nattention as learning this would mean I can ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rbklabs.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../../rss/index.rss" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #15171A;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../">
+                <amp-img class="site-icon" src="https://rbklabs.in/content/images/2020/05/transparent_bg-1.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Basic Chat App - Flutter</h1>
+                <section class="post-meta">
+                    Rakshith BK -
+                    <time class="post-date" datetime="2021-05-09">09 May 2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://rbklabs.in/content/images/2021/05/mainScreenshot.png" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p></p><p><a href="https://flutter.dev/">Flutter </a>is an open-source mobile SDK from Google to build native applications for multiple platforms from a single codebase. Flutter uses a programming language called <a href="https://dart.dev/">Dart</a>, which is similar to combination of C++ and JS. It is a Object oriented, garbage collected, strongly typed language that can compile to JS or Native code directly.</p><p>Since I did not know any mobile app development technologies, this got my attention as learning this would mean I can build apps for multi-platforms without having to learn multiple languages or frameworks. This chatting application is one of my first app that I made while trying to learn Dart and Flutter. Now that I look back on the code, few thing could have be written better 😁.</p><p>Rather than looking at tutorial videos where the main focus will be on explaining flutter and the UI will be awful, I chose to search for ideas on design/artist networking websites such as dribble and found a design that is simple to make yet elegant. <a href="https://search.muz.li/NDdkNDdkYmJj">This</a> is the final UI design idea I went ahead and implemented in this project.</p>
+
+<p class="warning">Your browser does not support HTML5 video.</p>
+<p></p><h3 id="app-features">App Features</h3><p>Some of the applications features/capabilities that are added in this project -</p><ul><li>Signup/Login with emailID and password</li><li>Auto update of contact/users list when new people register or update</li><li>Chat auto scroll on new message arival</li><li>Emoji keyboard</li><li>Profile photo selection from camera or gallary</li><li>Update display Name option</li><li>Random background image (only visible to you in drawer screen)</li><li>Notifications on new massages using FCM</li><li>Store user list and meta information on device disk</li></ul><h3 id="app-architecture">App Architecture</h3><p>Lets look at the brief overview of the application and backend. Since the intent of this project was to learn flutter, most of the heavy lifting is done in the client side and backend is mostly serverless implementation with the help of <a href="https://firebase.google.com/">Firebase</a>.</p><figure class="kg-card kg-image-card"></figure><p>Here Firebase is the main endpoint for our chat app, for registering new users and authentication, chat messages and notifications. </p><p><strong>Firebase Authentication</strong> - </p><p>Is used for new registration and auth of existing users. In this project we are only using auth by username-password combinations. Firebase also supports other auth types such as social media (Google, Facebook, Twitter), phone, Apple, GitHub etc..  </p><p>Each user when they register will get a unique Auth ID in this section. This will be used thought out the application to identify the user and provide services to him. The Firebase console also neatly displays the registered users for the app along with UID, which will be helpful for debugging if needed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Auth dashboard in Firebase console</figcaption></figure><p></p><p><strong>Firebase Firestore</strong> - </p><p>Is the main runner of the show. It is a Realtime document database that we use for storing chats. When a user sends a new message, this database is updated and the other party listening to this particular document will also receive this update, without the need of polling.</p><p>In the project we use Firebase into two main documents - users and chats.<br />Users will maintain all registered users of the app, along with data such as Name, email, UID, Push notification ID, profile Image.<br />Chats will maintain the user chats with other users. Here the UID pair of the users between whom the conversation is happening is used as the key to store the messages. Hence chats between different users will have different UID pairs and will show as independent channels in the Firestore. </p><p>Along with the message content, other metadata such as sent time, From and To UID and message type is also saved. The type field is for extending this in the future to enable sending or GIFs or video links. In this case the type will be, for example 1 for GIF and 2-Video, and the content field will be treated as URL link to that media in such cases. This info can be used at the client side to provide rich display or render the media accordingly.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>User document storing user meta in Firestore </figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Chats document storing messages in Firestore</figcaption></figure><p></p><p><strong>Firebase Storage</strong> - </p><p>Is a simple object storage service that is only used for storing the user profile picture. It is simple as it comes integrated within Firebase ecosystem and has access to user auth ID. This ID will be used to make sure that one user will store atmost one image file in this bucket. Once the user updates this profile image, the older file will be overwritten with new one. For now there is no option to send multimedia in this chat application, as this will add to the storage costs.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Profile picture files in Firebase Storage</figcaption></figure><p></p><p><strong>Firebase Cloud Messaging</strong> - </p><p>Is the successor of GCM and is a cross platform push notification service that is provided free of cost. Each user when they register for the chat app will also get a FCM ID.  This will be stored in the user meta data on the Firestore User document. </p><p>In this project we are using this to send push notification to the user on arrival of new messages. After the client sends the message to the user, through Firestore, the client will also send a push notification request to the recipient FCM ID. If the recipient does not have the app open, it will show a notification of new message and short text content.</p><p>Unlike other services, push notifications sent from the client will not show up in the Firebase console, so no image for this section 😁.</p><hr></hr><h3 id="client-code-explanation">Client code explanation</h3><p></p><p>The main heart of the application is the Firebase SKDs or packages for each of its services in Dart.</p><pre><code class="language-yaml">  firebase_core: ^1.0.1
+  firebase_auth: ^1.0.1
+  cloud_firestore: ^1.0.1
+  firebase_storage: ^8.0.0
+  firebase_messaging: ^9.0.0
+</code></pre>
+<p>These packages provide a simple and clean way to write your application logic by abstracting away all the API calls required to maintain connection and tokens to use the services. They also support Streams in Dart which is a great way to subscribe to the service and get updates in realtime when something changes. </p><p>For example in the below snippet you can see the Auth implementation, where if the <code>firebase_auth</code> package will maintain the session info and will automatically update in case of session expiry so that the app can show login screen again.</p><p></p>
+<p></p><p>This is the same approach used in the contacts screen as well as chat messages display screen. The client will subscribe to changes in the respective Firestore document and using <code>StreamBuilder</code>  in Dart, it will automatically refresh the widget to display the changes. So whenever a new message is received, the <code>ListView</code> widget will be updated to show the new message without the need to write any additional code for this.</p><p></p>
+<p></p><p>Apart from the basic chatting capabilities, this app also has a settings screen where the user can update his/her profile picture and display name. Here I am using the package <code>image_picker</code> to provide feature of selecting image either from files or camera. <br />Once the user selects the new image, we can show the preview in the avatar section and after Update button is pressed, the client will upload this new image to Firestore Storage with user UID as the filename. This will return the image URL for the stored image, which will be updated in the user meta data of Firestore document.</p><p></p>
+<p></p><p>The push notifications is something that I struggled a bit to implement. First important point I was not aware of is that this will not work properly in the Android Emulators, which I was using during the project to test out code. Second is that for the app to act on the push notifications, additional steps have to be done such as registering a callback function that will be called when the application in the background.</p><p></p>
+<p><br />I have configured this so that when the user click on the notification message the app will open the chat screen of that corresponding user so that he can continue the chat. We get the From UID in the push notification, which can be passed to chat screen along with other parameters to open the right chat. </p><p></p>
+<p></p><p>Sending a notification is straight forward. I am using <code>dio</code> package to make the http POST to send the message to <em>https://fcm.googleapis.com/fcm/send</em>, since this is not provided as part of the <code>firebase_messaging</code> package. <br />FCM notification structure has two main components - data message and notification message. Data can have custom key:value pairs and client is responsible for  processing this section. Notification part is automatically displayed to the user as part of the client app. It has predefined keys like title and body.</p><p></p>
+<p></p><p>The approach taken in this project is that all the chats and contacts are stored in Firebase. So each time user clicks on that app, the contact list is loaded from backend. Same for the chats, when user clicks on the contact, the corresponding chats are fetched and displayed. But I wanted to try out local storage/persistance as well. Here I am using a package called <code>hive</code>. This a simple and fast key-value database. The reason this was chosen was that the data structure to be stored is not complex and the performance of hive is better that SQL.<br />In this project I am only storing contact list along with meta information like last message, timestamp, UID etc..<br />So in the totality your device will contain contact list of the chat app, data related to Firebase tokens and auth, cached images that were downloaded.</p><p></p>
+<hr></hr><h3 id="clone-and-build-your-own-app">Clone and build your own app</h3><p>Complete source code is available on GitHub along with instructions to get you started on building the app - </p><p></p><figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://github.com/rakshithbk/flutter-chat-app"><div class="kg-bookmark-content"><div class="kg-bookmark-title">rakshithbk/flutter-chat-app</div><div class="kg-bookmark-description">Contribute to rakshithbk/flutter-chat-app development by creating an account on GitHub.</div><div class="kg-bookmark-metadata"><amp-img class="kg-bookmark-icon" src="https://github.githubassets.com/favicons/favicon.svg" width="32" height="32" layout="fixed"></amp-img><span class="kg-bookmark-author">GitHub</span><span class="kg-bookmark-publisher">rakshithbk</span></div></div><div class="kg-bookmark-thumbnail"><amp-img src="https://opengraph.githubassets.com/253d0fa5c70d44c396bc64fb408b549523626af6266f8884eb800fa234f9a13c/rakshithbk/flutter-chat-app" width="1200" height="600" layout="responsive"></amp-img></div></a></figure>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://rbklabs.in/content/images/2020/05/transparent_bg-1.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>RBKlabs</h3>
+            <p>Thoughts, stories and ideas.</p>
+        <p><a href="../../">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
