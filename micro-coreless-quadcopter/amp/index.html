@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Micro Coreless Quadcopter Build</title>
+
+    <meta name="description" content="This is a QX95 based micro brushed motor frame, which is relatively economic and not powerful enough to damage property or chop off digits." />
+    <link rel="icon" href="../../favicon.png" type="image/png" />
+    <link rel="canonical" href="../" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="RBKlabs" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Micro Coreless Quadcopter Build" />
+    <meta property="og:description" content="This is a QX95 based micro brushed motor frame, which is relatively economic and not powerful enough to damage property or chop off digits." />
+    <meta property="og:url" content="https://rbklabs.in/micro-coreless-quadcopter/" />
+    <meta property="og:image" content="https://rbklabs.in/content/images/2021/05/IMG_20210505_143717.jpg" />
+    <meta property="article:published_time" content="2021-05-30T14:59:00.000Z" />
+    <meta property="article:modified_time" content="2021-06-06T12:22:34.000Z" />
+    <meta property="article:tag" content="Electronics" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Micro Coreless Quadcopter Build" />
+    <meta name="twitter:description" content="This is a QX95 based micro brushed motor frame, which is relatively economic and not powerful enough to damage property or chop off digits." />
+    <meta name="twitter:url" content="https://rbklabs.in/micro-coreless-quadcopter/" />
+    <meta name="twitter:image" content="https://rbklabs.in/content/images/2021/05/IMG_20210505_143717.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rakshith BK" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Electronics" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1500" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "RBKlabs",
+        "url": "https://rbklabs.in/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/no_bg_xtra_large.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Rakshith BK",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://rbklabs.in/content/images/2020/05/profile_photo_rbklabs.jpeg",
+            "width": 901,
+            "height": 907
+        },
+        "url": "https://rbklabs.in/author/rakshith/",
+        "sameAs": [
+            "https://github.com/rakshithbk"
+        ]
+    },
+    "headline": "Micro Coreless Quadcopter Build",
+    "url": "https://rbklabs.in/micro-coreless-quadcopter/",
+    "datePublished": "2021-05-30T14:59:00.000Z",
+    "dateModified": "2021-06-06T12:22:34.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://rbklabs.in/content/images/2021/05/IMG_20210505_143717.jpg",
+        "width": 2000,
+        "height": 1500
+    },
+    "keywords": "Electronics",
+    "description": "\n\nMy First quad build. This is a QX95 based micro brushed motor frame, which is\nrelatively economic and not powerful enough to damage property or chop off\ndigits (and I still managed to cut myself when trying to fly this 😁). I my\nopinion it is better to start with something like this as you will at least\ncrash once while learning. \n\nComponents and build\nMain components of quad include - \n\n * Frame - QX95\n * Brushed/coreless motors - 2 x CW and 2 x CCW - 8520 Coreless\n * AIO Flight Controller - ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://rbklabs.in/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.3" />
+    <link rel="alternate" type="application/rss+xml" title="RBKlabs" href="../../rss/index.rss" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #15171A;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../">
+                <amp-img class="site-icon" src="https://rbklabs.in/content/images/2020/05/transparent_bg-1.png" width="50" height="50" layout="fixed"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Micro Coreless Quadcopter</h1>
+                <section class="post-meta">
+                    Rakshith BK -
+                    <time class="post-date" datetime="2021-05-30">30 May 2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://rbklabs.in/content/images/2021/05/IMG_20210505_143717.jpg" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p></p><p>My First quad build. This is a QX95 based micro brushed motor frame, which is relatively economic and not powerful enough to damage property or chop off digits (and I still managed to cut myself when trying to fly this 😁). I my opinion it is better to start with something like this as you will at least crash once while learning. </p><h3 id="components-and-build">Components and build</h3><p>Main components of quad include - </p><ul><li>Frame - <strong>QX95</strong></li><li>Brushed/coreless motors - 2 x CW and 2 x CCW - <strong>8520 Coreless</strong></li><li>AIO Flight Controller - (FC + Brushed motor controllers in a tiny package) - <strong>F3 Evo v2.0</strong></li><li>Propellers  - 2 x CW and 2 x CCW - <strong>55mm</strong></li><li>1S lipo battery - <strong>600mAh 25C</strong></li><li>Radio Receiver - <strong>FlySky FS-A8S</strong></li></ul><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div></figure><p></p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div></figure><p></p><ul><li>The first step in the build process is to fix the motors to main frame. This goes with the rubber gaskets into the four arms. Important thing to keep in mind is the direction of frame - which is the front, and the CW - CCW motor placement. This is a X - config quad, so the basic rule of thumb is start with CCW at top right corner and continue alternating.</li><li>Next is to secure the main Flight Controller to the frame. Make sure the right direction is facing forward. This is indicated by a arrow on the PCB and this should be pointed to the front of the quad.</li><li>Solder all the motor leads to FC. I measured and cut wires to match the correct length so that they don't dangle or get caught in the spinning props. Wrap the wires few times around the arm. this way, in case you mess up the wire stripping or you want to move to different frame, you still have some extra wire to unwrap and use. </li></ul><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div></figure><ul><li>One additional point I was not aware off, is that thee motors do have polarity. So for CW motor (Red &amp; Blue) - Red is positive and for CCW motor (Black &amp; White) - white is positive.<br />And on the FC, as you can see in the images above, each motor has two soldering pads. One of them has a passive component (should be a resistor) touching the pad and you should solder the negative terminal of motor to this pad on the board.</li><li>The four pad sets on the board are the UART ports. This one has three and can be used to connect any external modules. For this one I connected a Radio receiver in UART2.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>After soldering motor leads and radio receiver connector</figcaption></figure><ul><li>The final step in the build is to mount remaining top piece and secure the radio with a zip tie. The battery goes at the bottom and is kept in place with a rubber band.</li></ul><h3 id="3d-print-prop-guard">3D print prop guard</h3><p>What's more expensive than the main build is the spare parts you'll need when starting to learn. To keep this to a minimum, I decided to find and print some prop guards for my quad so that even when I crash it into objects, I reduce the damage to props and motors.<br />Found this simple <a href="https://www.thingiverse.com/thing:2191109">prop guard</a> that can be printed for each arm and snaps onto the motor. It has a decent covering range and does the job to an extent.</p><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div></figure><p></p><h3 id="firmware-and-calibration">Firmware and calibration</h3><ul><li>The F3 Evo v2.0 comes with outdated Clean Flight firmware on it. First thing I did was to switch to the latest Beta Flight version available for this board. Both are very similar, but I think Beta Flight is actively maintained and new updates are available. </li><li>For the computer to identify the FC board, right drivers have to be installed. Use <a href="https://zadig.akeo.ie/">Zadig</a> to identify and install the USB drivers.<br /></li></ul><figure class="kg-card kg-image-card"></figure><p></p><ul><li>The bootloader is locked by default on the board. To get access to it, the boot pins have to be jumped (there is a pair or solder pads labeled boot on FC, check images in above section). This can be done just by shorting the two pin when powering the board. <br />Note: should not solder these forever. Once the new firmware is flashed, these pins should not be in contact with each other in normal use.</li><li>There's a micro use port on this tiny board that is used to connect with the Flight configurator, in our case BetaFlight. To flash the latest firmware, make sure the drivers are installed and board is in bootloader mode. <br />In BetaFlight, select <strong><em>Firmware Flasher </em></strong>and select the right board from the drop down menu. At the time of flashing my board, the latest available was v4.0.6 for my F3 EVO.</li></ul><figure class="kg-card kg-image-card"></figure><ul><li>On BetaFlight is flashed, disconnect the board and connect again, this time without jumping the boot pins. Now the configurator should detect the board on connect and you should see a simulated quad on screen that moves in sync with board movement.</li><li>Next step is to calibrate the quad by placing it on a level surface and click <strong><em>Calibrate Accelerometer </em></strong>button in Setup screen. This will also clear up any laggy update of on screen quad movement  wrt actual quad movement. </li><li>Configure the Radio in Ports section to the connected UART on board. Then in Configuration section Receiver Mode and Serial type. In my case It is <strong><em>Serial Receiver - IBUS</em></strong></li><li>Other main config is the Modes screen. Here I have enabled the Arming switch, Acro/Angle mode and Horizon mode.</li></ul><figure class="kg-card kg-image-card kg-width-wide"></figure><figure class="kg-card kg-gallery-card kg-width-wide"><div class="kg-gallery-container"><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div><div class="kg-gallery-row"><div class="kg-gallery-image"></div><div class="kg-gallery-image"></div></div></div></figure><h3 id="simulators-and-v-joy-setup">Simulators and v-Joy setup</h3><p>It is best to start with a simulator to get a feel of how the first flight will be like. Best both in terms of economic and safety reasons 😁. Get a hang of how the gimbals feel and how the quad reacts to different stick movements. </p><p>But the challenge I faced was that my FS-i6x transmitter did not work properly through the provided PS2 to USB data cable. Even though it was detected in the simulator software, it did not function properly as the stick ends were off and could not be calibrated.</p><p>This was fixed by using the FS-iA10B receiver and connected that to PC. This was transmitter can be used wirelessly to play in Simulators. The receiver was connected using FTDI board for TTL conversion between receiver and PC.<br /> Next was to install required drivers to detect this receiver as a joystick device in windows. For this download and install <a href="https://ftdichip.com/drivers/vcp-drivers/">FTDI drivers</a> and <a href="https://sourceforge.net/projects/vjoystick/">v-Joy driver</a> and <a href="https://github.com/Cleric-K/vJoySerialFeeder">v-Joy SerialFeeder</a>.</p><h3 id="main-videos-i-watched-for-building-this-quad">Main videos I watched for building this quad</h3><ul><li><a href="https://www.youtube.com/watch" >FC connections</a> </li><li><a href="https://www.youtube.com/watch" >BetaFlight setup</a></li><li><a href="https://www.youtube.com/watch" >FlySky FS-i6x setup</a></li><li><a href="https://www.youtube.com/watch" >v-Joy Sim setup</a></li></ul><h3 id="lift-off">Lift Off</h3><p>Charge the lipo, attach the props, pair radios, make sure all connections are proper, and lift off...</p><p></p>
+
+<p class="warning">Your browser does not support HTML5 video.</p>
+
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://rbklabs.in/content/images/2020/05/transparent_bg-1.png" width="50" height="50" layout="fixed"></amp-img>
+        <h3>RBKlabs</h3>
+            <p>Thoughts, stories and ideas.</p>
+        <p><a href="../../">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
